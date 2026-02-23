@@ -32,13 +32,43 @@
             </div>
 
             <div class="pix-financial-header">
-                <div class="pix-status-badge">Aguardando Pagamento</div>
+                <div class="pix-status-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        style="margin-right: 6px;">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                        <circle cx="12" cy="12" r="4" fill="currentColor" />
+                    </svg>
+                    Aguardando Pagamento
+                </div>
                 <h2 class="pix-financial-amount" id="pix-amount">R$ 0,00</h2>
                 <p class="pix-financial-subtitle">Vencimento em <span id="pix-timer-text">10:00</span></p>
+
+                <div class="pix-dispatch-guarantee">
+                    <div class="pix-dispatch-icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M5 18H3C2.44772 18 2 17.5523 2 17V8.8C2 8.35817 2.35817 8 2.8 8H14.2C14.6418 8 15 8.35817 15 8.8V17C15 17.5523 14.5523 18 14 18H12"
+                                stroke="#00A868" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M15 10H19.5714C20.443 10 21.24 10.4901 21.657 11.2825L23.4756 14.7378C23.8217 15.3953 24 16.1268 24 16.8714V17C24 17.5523 23.5523 18 23 18H20.5"
+                                stroke="#00A868" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <circle cx="8.5" cy="18.5" r="3.5" stroke="#00A868" stroke-width="2" />
+                            <circle cx="17.5" cy="18.5" r="3.5" stroke="#00A868" stroke-width="2" />
+                            <path d="M6 11H8" stroke="#00A868" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <div class="pix-dispatch-pulse"></div>
+                    </div>
+                    <div class="pix-dispatch-text">
+                        <strong>Preparação Imediata Automática</strong>
+                        <span>Assim que o PIX for confirmado, sua maquininha será <b>separada e enviada</b> direto para
+                            o seu endereço.</span>
+                    </div>
+                </div>
             </div>
 
             <div id="pix-empty" class="pix-empty hidden">
-                <p>Nao encontramos uma cobranca PIX ativa para este pedido.</p>
+                <p>Não encontramos uma cobrança PIX ativa para este pedido.</p>
             </div>
 
             <div id="pix-card" class="pix-glass-card">
