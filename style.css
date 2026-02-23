@@ -432,6 +432,7 @@ p {
     object-fit: contain;
     object-position: center;
     display: block;
+    filter: hue-rotate(161deg) saturate(1.2) brightness(0.75);
 }
 
 .trust-card span {
