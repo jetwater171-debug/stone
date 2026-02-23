@@ -120,8 +120,8 @@
                             : (discountRate > 0 ? Math.round((25.9 * discountRate) * 100) / 100 : 0);
                         if (couponValue <= 0 && window.localStorage) {
                             window.localStorage.setItem('ifoodbag.coupon', JSON.stringify({
-                                code: 'FRETE5',
-                                amountOff: 5,
+                                code: 'SEGURO50',
+                                amountOff: 8.95,
                                 appliedAt: Date.now(),
                                 source: 'orderbump_back_auto',
                                 backOfferLevel: 1
