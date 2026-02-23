@@ -1,0 +1,213 @@
+/* Stone Home Global Resets for Overhaul */
+
+.stone-home-body {
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    color: #1F1F1F;
+}
+
+.top-announcement {
+    background-color: #0A6E31;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stone-header {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #EAEAEA;
+    padding: 16px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.stone-header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stone-logo {
+    height: 32px;
+}
+
+.stone-nav-desktop {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .stone-nav-desktop {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+    }
+    
+    .stone-nav-desktop a {
+        text-decoration: none;
+        color: #1F1F1F;
+        font-weight: 500;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .stone-nav-desktop a:hover {
+        color: #00A868;
+    }
+}
+
+.stone-header-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-login {
+    background: transparent;
+    border: 1px solid #1F1F1F;
+    color: #1F1F1F;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-secondary-green {
+    background: #00A868;
+    border: none;
+    color: #FFFFFF;
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.stone-hero-section {
+    background-color: #0A6E31;
+    color: #FFFFFF;
+    padding: 60px 24px 80px;
+    overflow: hidden;
+}
+
+.stone-hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+@media (min-width: 1024px) {
+    .stone-hero-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .stone-hero-content {
+        flex: 1;
+        max-width: 50%;
+    }
+    .stone-hero-image {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+.stone-hero-content h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+}
+
+.stone-hero-content p {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #E0FFE0;
+    line-height: 1.5;
+    margin-bottom: 32px;
+    max-width: none;
+}
+
+.stone-fees {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.fee-box {
+    border: 2px solid #FFFFFF;
+    border-radius: 12px;
+    padding: 12px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.fee-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.fee-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.btn-primary-stone {
+    background-color: #00A868;
+    color: #FFFFFF;
+    border: none;
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-primary-stone:hover {
+    background-color: #008C56;
+    transform: translateY(-2px);
+}
+
+.stone-hero-image img {
+    max-width: 100%;
+    height: auto;
+    width: 600px;
+    object-fit: contain;
+}
+
+/* Fix defaults for the rest of the funnel */
+:root {
+    --primary-color: #00A868 !important;
+    --font-family: 'Inter', sans-serif !important;
+}
+
+.container {
+    max-width: 680px !important;
+}
+
+.step {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
+}
+
+.btn-primary {
+    border-radius: 999px !important;
+}

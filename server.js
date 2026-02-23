@@ -337,7 +337,7 @@ app.post('/api/pix/create', async (req, res) => {
             },
             items: [
                 {
-                    title: 'Frete Bag do iFood',
+                    title: 'Frete Maquininha da Stone',
                     quantity: 1,
                     unitPrice: Number(value.toFixed(2)),
                     tangible: false
