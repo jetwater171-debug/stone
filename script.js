@@ -2741,21 +2741,21 @@ function initPix() {
     const shipping = loadShipping();
     const shouldAutoCreateFromOrderbumpBack = sessionStorage.getItem(STORAGE_KEYS.orderbumpBackAutoPix) === '1';
     const pixTopbar = document.querySelector('.pix-topbar');
-    const pixHero = document.querySelector('.pix-hero');
-    const pixHeading = document.querySelector('.pix-heading');
-    const pixInstructions = document.querySelector('.pix-instructions');
-    const pixQr = document.getElementById('pix-qr');
+    const pixHero = document.querySelector('.pix-financial-header');
+    const pixHeading = document.querySelector('.pix-status-badge');
+    const pixInstructions = document.querySelector('.pix-copy-action');
+    const pixQrImage = document.getElementById('pix-qr-image');
+    const pixQrPlaceholder = document.getElementById('pix-qr-placeholder');
     const pixCode = document.getElementById('pix-code');
-    const pixAmount = document.getElementById('pix-amount');
+    const pixAmountHeader = document.getElementById('pix-amount');
+    const pixAmountReceipt = document.getElementById('pix-amount-receipt');
     const pixEmpty = document.getElementById('pix-empty');
     const pixCard = document.getElementById('pix-card');
-    const pixTimer = document.getElementById('pix-timer');
-    const pixProgress = document.getElementById('pix-progress-bar');
+    const pixTimerText = document.getElementById('pix-timer-text');
     const pixOrderId = document.getElementById('pix-order-id');
     const pixBumpRow = document.getElementById('pix-bump-row');
     const pixBumpPrice = document.getElementById('pix-bump-price');
     const btnCopy = document.getElementById('btn-copy-pix');
-    const btnCopyIcon = document.getElementById('btn-copy-pix-icon');
     const pixIofView = document.getElementById('pix-iof-view');
     const pixIofQr = document.getElementById('pix-iof-qr');
     const pixIofCode = document.getElementById('pix-iof-code');
@@ -2859,14 +2859,15 @@ function initPix() {
 
     trackLead('pix_view', { stage: 'pix', shipping });
 
-    if (pixAmount) pixAmount.textContent = formatCurrency(pix.amount || 0);
+    if (pixAmountHeader) pixAmountHeader.textContent = formatCurrency(pix.amount || 0);
+    if (pixAmountReceipt) pixAmountReceipt.textContent = formatCurrency(pix.amount || 0);
     if (pixIofAmount) pixIofAmount.textContent = formatCurrency(pix.amount || 0);
     if (pixCorreiosAmount) pixCorreiosAmount.textContent = formatCurrency(pix.amount || 0);
     if (pixIofStatus) pixIofStatus.textContent = 'Status: Aguardando pagamento';
     if (pixCorreiosStatus) pixCorreiosStatus.textContent = 'Status: Aguardando pagamento';
     if (pixBumpRow && pixBumpPrice && pix.bumpPrice) {
         pixBumpPrice.textContent = formatCurrency(pix.bumpPrice);
-        pixBumpRow.classList.remove('hidden');
+        pixBumpRow.style.display = 'flex';
     }
     if (pixCode) pixCode.value = pix.paymentCode || '';
     if (pixIofCode) pixIofCode.value = pix.paymentCode || '';
@@ -2884,7 +2885,7 @@ function initPix() {
     };
 
     const applyPixQrSource = (qrUrl, qrBase64, fallbackCode = '') => {
-        const qrTargets = [pixQr, pixIofQr, pixCorreiosQr].filter(Boolean);
+        const qrTargets = [pixQrImage, pixIofQr, pixCorreiosQr].filter(Boolean);
         if (!qrTargets.length) return;
         const qrSource = String(qrUrl || qrBase64 || '').trim();
         const src = qrSource
@@ -2895,10 +2896,14 @@ function initPix() {
         if (!src) return;
         qrTargets.forEach((img) => {
             img.src = src;
+            if (img.id === 'pix-qr-image') {
+                img.style.display = 'block';
+                if (pixQrPlaceholder) pixQrPlaceholder.style.display = 'none';
+            }
         });
     };
 
-    if ((pixQr || pixIofQr || pixCorreiosQr) && (pix.paymentQrUrl || pix.paymentCodeBase64 || pix.paymentCode)) {
+    if ((pixQrImage || pixIofQr || pixCorreiosQr) && (pix.paymentQrUrl || pix.paymentCodeBase64 || pix.paymentCode)) {
         applyPixQrSource(pix.paymentQrUrl, pix.paymentCodeBase64, pix.paymentCode);
     }
 
@@ -2907,17 +2912,17 @@ function initPix() {
         if (!sourceInput) return;
         const value = sourceInput.value || '';
         if (!value) return;
-        const isIcon = button && button.id === 'btn-copy-pix-icon';
+
         const isIofButton = button && button.id === 'btn-copy-pix-iof';
         const isCorreiosButton = button && button.id === 'btn-copy-pix-correios';
+        const originalText = button ? button.innerHTML : '';
+
         const resetLabel = () => {
             if (!button) return;
-            if (isIcon) {
-                button.classList.remove('pix-copy-icon--done');
-            } else if (isIofButton || isCorreiosButton) {
+            if (isIofButton || isCorreiosButton) {
                 button.textContent = 'COPIAR';
             } else {
-                button.textContent = 'Copiar';
+                button.innerHTML = originalText;
             }
         };
         try {
@@ -2927,19 +2932,16 @@ function initPix() {
             document.execCommand('copy');
         }
         if (button) {
-            if (isIcon) {
-                button.classList.add('pix-copy-icon--done');
-            } else if (isIofButton || isCorreiosButton) {
+            if (isIofButton || isCorreiosButton) {
                 button.textContent = 'COPIADO!';
             } else {
-                button.textContent = 'Copiado!';
+                button.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Código Copiado!';
             }
-            setTimeout(resetLabel, 1600);
+            setTimeout(resetLabel, 2000);
         }
     };
 
     btnCopy?.addEventListener('click', () => handleCopy(btnCopy, pixCode));
-    btnCopyIcon?.addEventListener('click', () => handleCopy(btnCopyIcon, pixCode));
     btnCopyIof?.addEventListener('click', () => handleCopy(btnCopyIof, pixIofCode));
     btnCopyCorreios?.addEventListener('click', () => handleCopy(btnCopyCorreios, pixCorreiosCode));
 
@@ -2948,7 +2950,7 @@ function initPix() {
         pixOrderId.textContent = id ? id.slice(-6) : '—';
     }
 
-    if (pixTimer && pixProgress) {
+    if (pixTimerText) {
         const totalSeconds = 600;
         const createdAt = pix.createdAt || Date.now();
         const endTime = createdAt + totalSeconds * 1000;
@@ -2958,9 +2960,7 @@ function initPix() {
             const remaining = Math.max(0, endTime - Date.now());
             const minutes = Math.floor(remaining / 60000);
             const seconds = Math.floor((remaining % 60000) / 1000);
-            pixTimer.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-            const pct = (remaining / (totalSeconds * 1000)) * 100;
-            pixProgress.style.width = `${Math.max(0, pct)}%`;
+            pixTimerText.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
             if (remaining <= 0) {
                 if (timerId) clearInterval(timerId);
             }

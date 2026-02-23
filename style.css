@@ -4601,3 +4601,238 @@ body.modal-open {
     }
 
 }
+
+/* =========================================
+   STONE PREMIUM PIX UI (AWWWARDS TIER)
+   ========================================= */
+
+.pix-financial-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.pix-status-badge {
+    display: inline-flex;
+    padding: 6px 14px;
+    background: #00A868;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 999px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 12px rgba(0, 168, 104, 0.2);
+    animation: slideDownIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pix-financial-amount {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: -0.04em;
+    margin-bottom: 4px;
+    line-height: 1.1;
+}
+
+.pix-financial-subtitle {
+    font-size: 0.95rem;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.pix-financial-subtitle span {
+    color: #e53e3e;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.pix-glass-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02);
+    border-radius: 28px;
+    padding: 32px 24px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.pix-qr-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+    position: relative;
+}
+
+.pix-qr-frame {
+    width: 240px;
+    height: 240px;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 16px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.qr-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #00A868;
+    font-weight: 600;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    animation: pulseAlpha 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes pulseAlpha {
+    0% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 0.8;
+    }
+}
+
+.pix-divider {
+    position: relative;
+    text-align: center;
+    margin: 32px 0;
+}
+
+.pix-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.06), transparent);
+}
+
+.pix-divider-text {
+    position: relative;
+    background: #ffffff;
+    padding: 0 16px;
+    color: #718096;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.pix-copy-action {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.pix-premium-input {
+    width: 100%;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 16px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: #2d3748;
+    text-align: center;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.pix-premium-input:focus {
+    border-color: #00A868;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(0, 168, 104, 0.1);
+}
+
+.pix-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 18px;
+    border-radius: 16px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    background: #00A868;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pix-action-btn:active {
+    transform: scale(0.98);
+}
+
+.pix-security-notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #00A868;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 12px;
+    background: rgba(0, 168, 104, 0.06);
+    border-radius: 12px;
+}
+
+/* Receipt Details */
+.pix-receipt-details {
+    background: #f8fafc;
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.receipt-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+}
+
+.receipt-label {
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.receipt-value {
+    color: #1a202c;
+    font-weight: 700;
+    text-align: right;
+}
+
+.receipt-mono {
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: #718096;
+}
+
+.receipt-total {
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+}
+
+.receipt-total .receipt-value {
+    color: #00A868;
+    font-size: 1.35rem;
+}
