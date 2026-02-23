@@ -1,86 +1,86 @@
 ﻿const questions = {
     start: {
         id: 'start',
-        text: 'Qual é o faturamento médio mensal do seu negócio?',
+        text: 'Qual é o principal objetivo do seu negócio para este ano?',
         options: [
-            { text: 'Ainda não vendo', icon: '🚀', next: 'cnpj_type' },
-            { text: 'Até R$ 10.000', icon: '🌱', next: 'cnpj_type' },
-            { text: 'De R$ 10.000 a R$ 50.000', icon: '📈', next: 'cnpj_type' },
-            { text: 'Acima de R$ 50.000', icon: '🏢', next: 'cnpj_type' }
+            { text: 'Aumentar as vendas', icon: '🚀', next: 'cnpj_type' },
+            { text: 'Reduzir taxas e custos', icon: '🛡️', next: 'cnpj_type' },
+            { text: 'Receber o dinheiro mais rápido', icon: '⚡', next: 'cnpj_type' },
+            { text: 'Profissionalizar a gestão', icon: '📈', next: 'cnpj_type' }
         ]
     },
     cnpj_type: {
         id: 'cnpj_type',
-        text: 'Como o seu negócio está registrado atualmente?',
+        text: 'Em média, quanto você fatura por mês atualmente?',
         options: [
-            { text: 'Pessoa Física (CPF)', icon: '👤', next: 'sector' },
-            { text: 'MEI', icon: '💼', next: 'sector' },
-            { text: 'LTDA / Outros (CNPJ)', icon: '🏬', next: 'sector' }
+            { text: 'Começando agora (Até R$ 5 mil)', icon: '🌱', next: 'sector' },
+            { text: 'Em crescimento (R$ 5 mil a R$ 20 mil)', icon: '📊', next: 'sector' },
+            { text: 'Já consolidado (R$ 20 mil a R$ 50 mil)', icon: '💼', next: 'sector' },
+            { text: 'Alto volume (Acima de R$ 50 mil)', icon: '🏢', next: 'sector' }
         ]
     },
     sector: {
         id: 'sector',
-        text: 'Em qual setor principal sua empresa atua?',
+        text: 'Qual o seu principal segmento de atuação?',
         options: [
-            { text: 'Alimentação e Bebidas', icon: '🍔', next: 'sales_model' },
-            { text: 'Varejo e Vestuário', icon: '🛍️', next: 'sales_model' },
-            { text: 'Serviços em Geral', icon: '🛠️', next: 'sales_model' },
-            { text: 'Outros', icon: '📋', next: 'sales_model' }
+            { text: 'Alimentação & Delivery', icon: '🍔', next: 'sales_model' },
+            { text: 'Varejo & Vestuário', icon: '🛍️', next: 'sales_model' },
+            { text: 'Beleza & Estética', icon: '✂️', next: 'sales_model' },
+            { text: 'Serviços & Outros', icon: '🛠️', next: 'sales_model' }
         ]
     },
     sales_model: {
         id: 'sales_model',
-        text: 'Como você realiza a maior parte das suas vendas hoje?',
+        text: 'Qual é o seu maior problema com as maquininhas de outras marcas?',
         options: [
-            { text: 'Físico / Balcão', icon: '🏪', next: 'current_machine' },
-            { text: 'Delivery / Redes Sociais', icon: '📱', next: 'current_machine' },
-            { text: 'Cobrança Externa', icon: '🚗', next: 'current_machine' }
+            { text: 'Taxas abusivas', icon: '💸', next: 'current_machine' },
+            { text: 'Demora para o dinheiro cair', icon: '⏳', next: 'current_machine' },
+            { text: 'Suporte inexistente (Robôs)', icon: '📞', next: 'current_machine' },
+            { text: 'Máquina lenta / Bateria viciada', icon: '🔋', next: 'current_machine' }
         ]
     },
     current_machine: {
         id: 'current_machine',
-        text: 'Qual maquininha você utiliza hoje?',
+        text: 'Com que rapidez você precisa que o dinheiro das vendas esteja na sua conta?',
         options: [
-            { text: 'PagSeguro / Mercado Pago', icon: '🟡', next: 'main_pain' },
-            { text: 'Cielo / Rede', icon: '🔵', next: 'main_pain' },
-            { text: 'Ton / InfinitePay', icon: '🟢', next: 'main_pain' },
-            { text: 'Nenhuma, quero a minha 1ª', icon: '✨', next: 'main_pain' }
+            { text: 'Imediatamente (Na hora)', icon: '⚡', next: 'main_pain' },
+            { text: 'No dia seguinte (D+1)', icon: '🌅', next: 'main_pain' },
+            { text: 'Em até 14 dias', icon: '📅', next: 'main_pain' }
         ]
     },
     main_pain: {
         id: 'main_pain',
-        text: 'Qual é a sua maior insatisfação com as soluções de pagamento atuais?',
+        text: 'Qual o impacto das vendas via PIX e aproximação (NFC) no seu dia a dia?',
         options: [
-            { text: 'Taxas muito altas', icon: '💸', next: 'anticipation' },
-            { text: 'Demora para receber o dinheiro', icon: '⏳', next: 'anticipation' },
-            { text: 'Suporte ausente quando preciso', icon: '🎧', next: 'anticipation' },
-            { text: 'A máquina quebra/falha muito', icon: '🛑', next: 'anticipation' }
+            { text: 'São a grande maioria hoje', icon: '📲', next: 'anticipation' },
+            { text: 'Estão crescendo bastante', icon: '⚖️', next: 'anticipation' },
+            { text: 'Ainda prefiro cartão físico', icon: '💳', next: 'anticipation' }
         ]
     },
     anticipation: {
         id: 'anticipation',
-        text: 'Você precisa que o dinheiro das vendas caia na sua conta em qual prazo?',
+        text: 'Se a sua máquina der problema numa sexta-feira à noite, o que você espera?',
         options: [
-            { text: 'Na hora!', icon: '⚡', next: 'pix_usage' },
-            { text: 'No dia útil seguinte (D+1)', icon: '📅', next: 'pix_usage' },
-            { text: 'Em 30 dias (Taxa menor)', icon: '📉', next: 'pix_usage' }
+            { text: 'Atendimento humano em 5 segundos', icon: '🤝', next: 'pix_usage' },
+            { text: 'Troca expressa da máquina', icon: '🛵', next: 'pix_usage' },
+            { text: 'Falar com um robô (Não quero isso)', icon: '🛑', next: 'pix_usage' }
         ]
     },
     pix_usage: {
         id: 'pix_usage',
-        text: 'Hoje, qual a porcentagem das suas vendas feitas através do PIX?',
+        text: 'Como está a formalização da sua empresa para ativarmos os planos empresariais?',
         options: [
-            { text: 'A maioria (mais de 70%)', icon: '🟩', next: 'commitment' },
-            { text: 'Metade das vendas (50%)', icon: '🟨', next: 'commitment' },
-            { text: 'Poucas vendas via PIX', icon: '⬛', next: 'commitment' }
+            { text: 'Tenho CNPJ (MEI / LTDA)', icon: '📝', next: 'commitment' },
+            { text: 'Vendo no CPF (Autônomo)', icon: '👤', next: 'commitment' },
+            { text: 'Estou abrindo meu CNPJ', icon: '⏳', next: 'commitment' }
         ]
     },
     commitment: {
         id: 'commitment',
-        text: 'Se aprovado para taxa 0%, você se compromete a usar a máquina Stone como principal meio de pagamento nos próximos 30 dias?',
+        text: 'Se liberarmos a Maquininha Stone Grátis com as menores taxas do Brasil para o seu perfil, você se compromete a priorizar o uso dela?',
         options: [
-            { text: 'Sim, eu me comprometo!', icon: '🤝', next: 'personal_step' },
-            { text: 'Com certeza!', icon: '💚', next: 'personal_step' }
+            { text: 'Sim, prioridade total na Stone!', icon: '🤝', next: 'personal_step' },
+            { text: 'Com toda a certeza!', icon: '💚', next: 'personal_step' }
         ]
     }
 };
