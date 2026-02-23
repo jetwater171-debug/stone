@@ -31,9 +31,42 @@
                 <div class="pix-topbar__title">Pagamento</div>
             </div>
 
-            <div class="pix-hero">
-                <img src="assets/pix-photo.webp" alt="Pagamento via Pix" loading="eager">
+            <div class="pix-hero" style="text-align: center; margin: 16px 0 32px; padding: 20px 0;">
+                <div
+                    style="width: 104px; height: 104px; background: rgba(0, 168, 104, 0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; position: relative;">
+                    <div
+                        style="position: absolute; inset: -14px; background: rgba(0, 168, 104, 0.04); border-radius: 50%; z-index: 0; animation: pulseRing 2s infinite cubic-bezier(0.16, 1, 0.3, 1);">
+                    </div>
+                    <svg style="z-index: 1;" width="42" height="42" viewBox="0 0 512 512" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M129.43 381.543l-97.46-97.46c-29.29-29.29-29.29-76.78 0-106.07l97.46-97.46c29.29-29.29 76.78-29.29 106.07 0l97.46 97.46c29.29 29.29 29.29 76.78 0 106.07l-97.46 97.46c-29.29 29.29-76.78 29.29-106.07 0zm253.14 0l-97.46-97.46c-29.29-29.29-29.29-76.78 0-106.07l97.46-97.46c29.29-29.29 76.78-29.29 106.07 0l97.46 97.46c29.29 29.29 29.29 76.78 0 106.07l-97.46 97.46c-29.29 29.29-76.77 29.29-106.07 0z"
+                            fill="#00A868" />
+                        <path
+                            d="M256 326.04l-69.04-69.04c-15.62-15.62-15.62-40.95 0-56.57l69.04-69.04c15.62-15.62 40.95-15.62 56.57 0l69.04 69.04c15.62 15.62 15.62 40.95 0 56.57l-69.04 69.04c-15.62 15.62-40.95 15.62-56.57 0z"
+                            fill="#ffffff" stroke="#00A868" stroke-width="12" />
+                    </svg>
+                </div>
             </div>
+
+            <style>
+                @keyframes pulseRing {
+                    0% {
+                        transform: scale(0.95);
+                        opacity: 0.8;
+                    }
+
+                    50% {
+                        transform: scale(1.05);
+                        opacity: 0.3;
+                    }
+
+                    100% {
+                        transform: scale(0.95);
+                        opacity: 0.8;
+                    }
+                }
+            </style>
 
             <h2 class="pix-heading">Pedido aguardando pagamento</h2>
             <p class="pix-instructions">
