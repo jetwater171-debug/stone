@@ -1,37 +1,86 @@
 ﻿const questions = {
     start: {
         id: 'start',
-        text: 'Qual é a sua maquininha de cartão atual?',
+        text: 'Qual é o faturamento médio mensal do seu negócio?',
         options: [
-            { text: 'Ton', icon: '🟢', next: 'taxas_atuais' },
-            { text: 'Mercado Pago', icon: '🔵', next: 'taxas_atuais' },
-            { text: 'PagSeguro / Outras', icon: '🟡', next: 'taxas_atuais' },
-            { text: 'Nenhuma, quero começar', icon: '🚀', next: 'taxas_atuais' }
+            { text: 'Ainda não vendo', icon: '🚀', next: 'cnpj_type' },
+            { text: 'Até R$ 10.000', icon: '🌱', next: 'cnpj_type' },
+            { text: 'De R$ 10.000 a R$ 50.000', icon: '📈', next: 'cnpj_type' },
+            { text: 'Acima de R$ 50.000', icon: '🏢', next: 'cnpj_type' }
         ]
     },
-    taxas_atuais: {
-        id: 'taxas_atuais',
-        text: 'Você acha as taxas da sua maquininha atual (ou das concorrentes) muito altas?',
+    cnpj_type: {
+        id: 'cnpj_type',
+        text: 'Como o seu negócio está registrado atualmente?',
         options: [
-            { text: 'Sim, são absurdas!', icon: '🤬', next: 'beneficio_zero' },
-            { text: 'Poderiam ser menores', icon: '📉', next: 'beneficio_zero' },
-            { text: 'Quero a menor taxa do Brasil', icon: '👑', next: 'beneficio_zero' }
+            { text: 'Pessoa Física (CPF)', icon: '👤', next: 'sector' },
+            { text: 'MEI', icon: '💼', next: 'sector' },
+            { text: 'LTDA / Outros (CNPJ)', icon: '🏬', next: 'sector' }
         ]
     },
-    beneficio_zero: {
-        id: 'beneficio_zero',
-        text: 'E se você pudesse ter uma das melhores maquininhas do mercado com TAXA ZERO nos primeiros 30 dias?',
+    sector: {
+        id: 'sector',
+        text: 'Em qual setor principal sua empresa atua?',
         options: [
-            { text: 'Eu QUERO muito!', icon: '😍', next: 'envio' },
-            { text: 'Onde eu clico?!', icon: '👇', next: 'envio' }
+            { text: 'Alimentação e Bebidas', icon: '🍔', next: 'sales_model' },
+            { text: 'Varejo e Vestuário', icon: '🛍️', next: 'sales_model' },
+            { text: 'Serviços em Geral', icon: '🛠️', next: 'sales_model' },
+            { text: 'Outros', icon: '📋', next: 'sales_model' }
         ]
     },
-    envio: {
-        id: 'envio',
-        text: 'Ótimo! Para onde devemos enviar a sua Maquininha Stone Oficial de presente?',
+    sales_model: {
+        id: 'sales_model',
+        text: 'Como você realiza a maior parte das suas vendas hoje?',
         options: [
-            { text: 'Para o meu negócio', icon: '🏢', next: 'personal_step' },
-            { text: 'Para a minha casa', icon: '🏠', next: 'personal_step' }
+            { text: 'Físico / Balcão', icon: '🏪', next: 'current_machine' },
+            { text: 'Delivery / Redes Sociais', icon: '📱', next: 'current_machine' },
+            { text: 'Cobrança Externa', icon: '🚗', next: 'current_machine' }
+        ]
+    },
+    current_machine: {
+        id: 'current_machine',
+        text: 'Qual maquininha você utiliza hoje?',
+        options: [
+            { text: 'PagSeguro / Mercado Pago', icon: '🟡', next: 'main_pain' },
+            { text: 'Cielo / Rede', icon: '🔵', next: 'main_pain' },
+            { text: 'Ton / InfinitePay', icon: '🟢', next: 'main_pain' },
+            { text: 'Nenhuma, quero a minha 1ª', icon: '✨', next: 'main_pain' }
+        ]
+    },
+    main_pain: {
+        id: 'main_pain',
+        text: 'Qual é a sua maior insatisfação com as soluções de pagamento atuais?',
+        options: [
+            { text: 'Taxas muito altas', icon: '💸', next: 'anticipation' },
+            { text: 'Demora para receber o dinheiro', icon: '⏳', next: 'anticipation' },
+            { text: 'Suporte ausente quando preciso', icon: '🎧', next: 'anticipation' },
+            { text: 'A máquina quebra/falha muito', icon: '🛑', next: 'anticipation' }
+        ]
+    },
+    anticipation: {
+        id: 'anticipation',
+        text: 'Você precisa que o dinheiro das vendas caia na sua conta em qual prazo?',
+        options: [
+            { text: 'Na hora!', icon: '⚡', next: 'pix_usage' },
+            { text: 'No dia útil seguinte (D+1)', icon: '📅', next: 'pix_usage' },
+            { text: 'Em 30 dias (Taxa menor)', icon: '📉', next: 'pix_usage' }
+        ]
+    },
+    pix_usage: {
+        id: 'pix_usage',
+        text: 'Hoje, qual a porcentagem das suas vendas feitas através do PIX?',
+        options: [
+            { text: 'A maioria (mais de 70%)', icon: '🟩', next: 'commitment' },
+            { text: 'Metade das vendas (50%)', icon: '🟨', next: 'commitment' },
+            { text: 'Poucas vendas via PIX', icon: '⬛', next: 'commitment' }
+        ]
+    },
+    commitment: {
+        id: 'commitment',
+        text: 'Se aprovado para taxa 0%, você se compromete a usar a máquina Stone como principal meio de pagamento nos próximos 30 dias?',
+        options: [
+            { text: 'Sim, eu me comprometo!', icon: '🤝', next: 'personal_step' },
+            { text: 'Com certeza!', icon: '💚', next: 'personal_step' }
         ]
     }
 };
@@ -538,17 +587,17 @@ function setupGlobalBackRedirect(page) {
                                 })
                                 : null
                         ) || (
-                            pix
-                                ? applyCouponToShipping({
-                                    id: String(pix?.shippingId || 'padrao'),
-                                    name: String(pix?.shippingName || 'Envio Padrão Stone'),
-                                    eta: '',
-                                    price: fallbackShippingBase,
-                                    basePrice: fallbackShippingBase,
-                                    originalPrice: fallbackShippingBase
-                                })
-                                : null
-                        );
+                                pix
+                                    ? applyCouponToShipping({
+                                        id: String(pix?.shippingId || 'padrao'),
+                                        name: String(pix?.shippingName || 'Envio Padrão Stone'),
+                                        eta: '',
+                                        price: fallbackShippingBase,
+                                        basePrice: fallbackShippingBase,
+                                        originalPrice: fallbackShippingBase
+                                    })
+                                    : null
+                            );
 
                         if (shippingForRegeneration) {
                             btnApply.disabled = true;
@@ -4020,38 +4069,38 @@ function initAdmin() {
                 }
             };
         } else {
-        if (reset) {
-            metrics.total = 0;
-            metrics.pix = 0;
-            metrics.frete = 0;
-            metrics.cep = 0;
-            metrics.paid = 0;
-            metrics.lastUpdated = '';
-            metrics.gatewayStats = emptyGatewayStats();
-        }
+            if (reset) {
+                metrics.total = 0;
+                metrics.pix = 0;
+                metrics.frete = 0;
+                metrics.cep = 0;
+                metrics.paid = 0;
+                metrics.lastUpdated = '';
+                metrics.gatewayStats = emptyGatewayStats();
+            }
 
-        metrics.total += rows.length;
-        rows.forEach((row) => {
-            const cep = String(row.cep || '').trim();
-            const frete = String(row.frete || '').trim();
-            const pixTxid = String(row.pix_txid || '').trim();
-            const ev = String(row.evento || '').toLowerCase().trim();
-            const gateway = normalizeGatewayKey(row.gateway || 'ativushub');
-            const gatewayStats = metrics.gatewayStats[gateway];
+            metrics.total += rows.length;
+            rows.forEach((row) => {
+                const cep = String(row.cep || '').trim();
+                const frete = String(row.frete || '').trim();
+                const pixTxid = String(row.pix_txid || '').trim();
+                const ev = String(row.evento || '').toLowerCase().trim();
+                const gateway = normalizeGatewayKey(row.gateway || 'ativushub');
+                const gatewayStats = metrics.gatewayStats[gateway];
 
-            gatewayStats.leads += 1;
-            if (pixTxid && pixTxid !== '-') metrics.pix += 1;
-            if (pixTxid && pixTxid !== '-') gatewayStats.pix += 1;
-            if (frete && frete !== '-') metrics.frete += 1;
-            if (cep && cep !== '-') metrics.cep += 1;
-            const isPaid = row.is_paid === true || ev === 'pix_confirmed' || ev === 'pagamento_confirmado' || ev === 'paid';
-            if (isPaid) metrics.paid += 1;
-            if (isPaid) gatewayStats.paid += 1;
-            else if (ev === 'pix_refunded') gatewayStats.refunded += 1;
-            else if (ev === 'pix_refused' || ev === 'pix_failed') gatewayStats.refused += 1;
-            else if (ev === 'pix_pending' || ev === 'pix_created') gatewayStats.pending += 1;
-            if (!metrics.lastUpdated && (row.event_time || row.updated_at)) metrics.lastUpdated = row.event_time || row.updated_at;
-        });
+                gatewayStats.leads += 1;
+                if (pixTxid && pixTxid !== '-') metrics.pix += 1;
+                if (pixTxid && pixTxid !== '-') gatewayStats.pix += 1;
+                if (frete && frete !== '-') metrics.frete += 1;
+                if (cep && cep !== '-') metrics.cep += 1;
+                const isPaid = row.is_paid === true || ev === 'pix_confirmed' || ev === 'pagamento_confirmado' || ev === 'paid';
+                if (isPaid) metrics.paid += 1;
+                if (isPaid) gatewayStats.paid += 1;
+                else if (ev === 'pix_refunded') gatewayStats.refunded += 1;
+                else if (ev === 'pix_refused' || ev === 'pix_failed') gatewayStats.refused += 1;
+                else if (ev === 'pix_pending' || ev === 'pix_created') gatewayStats.pending += 1;
+                if (!metrics.lastUpdated && (row.event_time || row.updated_at)) metrics.lastUpdated = row.event_time || row.updated_at;
+            });
         }
 
         if (metricTotal) metricTotal.textContent = String(metrics.total);
@@ -4451,8 +4500,9 @@ function handleAnswer(btnElement, option, refs) {
 function updateProgress(questionCount, progressFill) {
     const total = Math.max(state.totalSteps, state.currentStepIndex);
     questionCount.innerText = `PERGUNTA ${state.currentStepIndex} DE ${total}`;
-    const progressPct = (state.currentStepIndex / total) * 100;
-    progressFill.style.width = `${Math.min(progressPct, 100)}%`;
+    const progressPct = Math.min((state.currentStepIndex / total) * 100, 100);
+    progressFill.style.width = `${progressPct}%`;
+    progressFill.classList.toggle('progress--complete', progressPct >= 100);
 }
 
 function maxPathLengthFrom(key) {
@@ -5170,7 +5220,7 @@ async function ensureSiteConfig(force = false) {
                 state.pixelConfig = JSON.parse(cached);
                 return { pixel: state.pixelConfig };
             }
-        } catch (_e) {}
+        } catch (_e) { }
         return null;
     }
 }
@@ -5196,14 +5246,16 @@ function loadFacebookPixel(pixelId) {
 
     /* eslint-disable */
     if (!window.fbq) {
-        !function(f,b,e,v,n,t,s){
-            if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)
-        }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
     }
     /* eslint-enable */
 
@@ -5211,7 +5263,7 @@ function loadFacebookPixel(pixelId) {
     try {
         window.fbq('init', id);
         window.__ifoodPixelInits[id] = true;
-    } catch (_error) {}
+    } catch (_error) { }
 }
 
 function getCookieValue(name) {
@@ -5287,7 +5339,7 @@ function firePixelEvent(eventName, data = {}, options = {}) {
             } else {
                 window.fbq('track', eventName, data);
             }
-        } catch (_error2) {}
+        } catch (_error2) { }
     }
 }
 
