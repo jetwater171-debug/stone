@@ -211,10 +211,11 @@ p {
 
 /* Hero Image */
 .hero-image {
-    width: 100vw;
+    width: 100%;
+    max-width: 480px;
     display: flex;
     justify-content: center;
-    margin: 0 calc(50% - 50vw) 0;
+    margin: 16px auto 32px;
     position: relative;
 }
 
@@ -224,11 +225,9 @@ p {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80vw;
-    height: 80vw;
-    max-width: 600px;
-    max-height: 600px;
-    background: radial-gradient(circle, rgba(0, 168, 104, 0.2) 0%, rgba(0, 168, 104, 0) 65%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(0, 168, 104, 0.15) 0%, rgba(0, 168, 104, 0) 70%);
     border-radius: 50%;
     z-index: -1;
     pointer-events: none;
@@ -236,12 +235,9 @@ p {
 
 .hero-image img {
     width: 100%;
-    max-width: 100%;
     height: auto;
     object-fit: contain;
-    object-position: center;
-    transform: scale(1.06);
-    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.2));
 }
 
 /* Success Image */
