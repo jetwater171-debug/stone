@@ -3421,9 +3421,6 @@ function initAdmin() {
     const pixelEventLead = document.getElementById('pixel-event-lead');
     const pixelEventCheckout = document.getElementById('pixel-event-checkout');
     const pixelEventPurchase = document.getElementById('pixel-event-purchase');
-    const pixelCapiEnabled = document.getElementById('pixel-capi-enabled');
-    const pixelCapiToken = document.getElementById('pixel-capi-token');
-    const pixelCapiTestCode = document.getElementById('pixel-capi-test-code');
 
     const utmfyEnabled = document.getElementById('utmfy-enabled');
     const utmfyEndpoint = document.getElementById('utmfy-endpoint');
@@ -3704,9 +3701,6 @@ function initAdmin() {
             if (pixelEventLead) pixelEventLead.checked = data.pixel?.events?.lead !== false;
             if (pixelEventCheckout) pixelEventCheckout.checked = data.pixel?.events?.checkout !== false;
             if (pixelEventPurchase) pixelEventPurchase.checked = data.pixel?.events?.purchase !== false;
-            if (pixelCapiEnabled) pixelCapiEnabled.checked = !!data.pixel?.capi?.enabled;
-            if (pixelCapiToken) pixelCapiToken.value = data.pixel?.capi?.accessToken || '';
-            if (pixelCapiTestCode) pixelCapiTestCode.value = data.pixel?.capi?.testEventCode || '';
         }
 
         if (hasUtmfyForm) {
@@ -3792,12 +3786,6 @@ function initAdmin() {
                     lead: pixelEventLead?.checked !== false,
                     purchase: pixelEventPurchase?.checked !== false,
                     checkout: pixelEventCheckout?.checked !== false
-                },
-                capi: {
-                    ...(currentSettings?.pixel?.capi || {}),
-                    enabled: !!pixelCapiEnabled?.checked,
-                    accessToken: pixelCapiToken?.value?.trim() || '',
-                    testEventCode: pixelCapiTestCode?.value?.trim() || ''
                 }
             };
         }
@@ -5387,7 +5375,7 @@ function maybeTrackPixel(eventName, payload = {}) {
 
     if (eventName === 'quiz_view' && pixel.events?.quiz_view !== false) {
         firePixelEvent('ViewContent', {
-            content_name: 'quiz_ifood'
+            content_name: 'quiz_maquininha_stone'
         });
     }
 
@@ -5404,14 +5392,14 @@ function maybeTrackPixel(eventName, payload = {}) {
 
     if (eventName === 'upsell_view' && pixel.events?.checkout !== false) {
         firePixelEvent('ViewContent', {
-            content_name: 'upsell_frete_1dia',
+            content_name: 'upsell_prioridade_envio',
             content_category: 'upsell'
         });
     }
 
     if (eventName === 'upsell_accept' && pixel.events?.checkout !== false) {
         firePixelEvent('AddToCart', {
-            content_name: 'upsell_frete_1dia',
+            content_name: 'upsell_prioridade_envio',
             currency: 'BRL',
             value: totalValue > 0 ? totalValue : 18.98
         });
@@ -5419,14 +5407,14 @@ function maybeTrackPixel(eventName, payload = {}) {
 
     if (eventName === 'upsell_iof_view' && pixel.events?.checkout !== false) {
         firePixelEvent('ViewContent', {
-            content_name: 'upsell_taxa_iof_bag',
+            content_name: 'upsell_seguro_maquininha',
             content_category: 'upsell'
         });
     }
 
     if (eventName === 'upsell_iof_accept' && pixel.events?.checkout !== false) {
         firePixelEvent('AddToCart', {
-            content_name: 'upsell_taxa_iof_bag',
+            content_name: 'upsell_seguro_maquininha',
             currency: 'BRL',
             value: totalValue > 0 ? totalValue : 11.73
         });
@@ -5434,14 +5422,14 @@ function maybeTrackPixel(eventName, payload = {}) {
 
     if (eventName === 'upsell_correios_view' && pixel.events?.checkout !== false) {
         firePixelEvent('ViewContent', {
-            content_name: 'upsell_taxa_objeto_grande_correios',
+            content_name: 'upsell_despacho_imediato_correios',
             content_category: 'upsell'
         });
     }
 
     if (eventName === 'upsell_correios_accept' && pixel.events?.checkout !== false) {
         firePixelEvent('AddToCart', {
-            content_name: 'upsell_taxa_objeto_grande_correios',
+            content_name: 'upsell_despacho_imediato_correios',
             currency: 'BRL',
             value: totalValue > 0 ? totalValue : 15.96
         });
