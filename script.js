@@ -2915,6 +2915,8 @@ function initPix() {
 
         const isIofButton = button && button.id === 'btn-copy-pix-iof';
         const isCorreiosButton = button && button.id === 'btn-copy-pix-correios';
+
+        // Grab the *current* innerHTML right when the button is pressed
         const originalText = button ? button.innerHTML : '';
 
         const resetLabel = () => {
