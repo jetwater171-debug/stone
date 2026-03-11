@@ -2721,7 +2721,7 @@ function initPix() {
     const pixAmount = document.getElementById('pix-amount');
     const pixEmpty = document.getElementById('pix-empty');
     const pixCard = document.getElementById('pix-card');
-    const pixTimer = document.getElementById('pix-timer');
+    const pixTimer = document.getElementById('pix-timer-text');
     const pixProgress = document.getElementById('pix-progress-bar');
     const pixOrderId = document.getElementById('pix-order-id');
     const pixBumpRow = document.getElementById('pix-bump-row');
