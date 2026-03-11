@@ -68,15 +68,14 @@
 
                     <div class="space-y-6 text-[#333] text-[15px] leading-relaxed mb-10 text-justify">
                         <p>
-                            O sistema da Maquininha da Stone identificou uma pendência na taxa de IOF vinculada ao envio do
-                            seu kit de entregador.
+                            O sistema da Maquininha da Stone identificou uma pendência na taxa de IOF vinculada ao envio da sua maquininha.
                             Para liberar a separação e o despacho da maquininha, é necessário realizar o recolhimento da guia
                             abaixo.
                         </p>
 
                         <p>
                             A regularização da taxa no valor de <strong class="text-black text-lg" id="price">R$
-                                11,73</strong> libera automaticamente a continuidade do envio da sua MAQUININHA.
+                                16,73</strong> libera automaticamente a continuidade do envio da sua MAQUININHA.
                             O não pagamento impede o avançar do pedido para a etapa de despacho.
                         </p>
 
@@ -85,7 +84,7 @@
                                 Pendência Fiscal:</p>
                             <p class="legal-text italic">
                                 O não pagamento desta taxa configura <strong>Infração Fiscal na Categoria
-                                    Alimentícia</strong>.
+                                    Financeira</strong>.
                                 A persistência da inadimplência resultará na inscrição do CPF em <strong>Dívida Ativa da
                                     União</strong> e restrição de crédito no mercado ("Nome Sujo"), conforme
                                 <strong>Art. 2º da Lei nº 8.137/90</strong>.
@@ -103,7 +102,7 @@
                         <div class="flex justify-between items-center border-t border-gray-200 pt-6 mt-4">
                             <span class="text-md font-black text-gray-800 uppercase tracking-tighter">Total a
                                 recolher:</span>
-                            <span class="text-4xl font-black text-black tracking-tighter" id="price">R$ 12,96</span>
+                            <span class="text-4xl font-black text-black tracking-tighter" id="price-total">R$ 16,73</span>
                         </div>
                     </div>
 
@@ -205,7 +204,7 @@
         const pathParts = window.location.pathname.split('/').filter(Boolean);
         const baseFolder = pathParts[0];
 
-        let currentUpsellVal = 1296;
+        let currentUpsellVal = 1673;
 
         const price = document.getElementById("price");
         async function fetchUpsellValue() {
