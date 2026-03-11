@@ -756,7 +756,7 @@ module.exports = async (req, res) => {
                 price: latestLead.shipping_price
             } : null,
             bump: latestLead && latestLead.bump_selected ? {
-                title: 'Seguro Bag',
+                title: 'Seguro Maquininha',
                 price: latestLead.bump_price
             } : null,
             upsell: upsellEvent ? {
@@ -818,40 +818,34 @@ module.exports = async (req, res) => {
                     customerEmail: latestLead?.email || '',
                     cep: latestLead?.cep || '',
                     shippingName: latestLead?.shipping_name || '',
+                    utm: {
+                        utm_source: latestLead?.utm_source || leadUtm?.utm_source || leadUtm?.src || '',
+                        utm_medium: latestLead?.utm_medium || leadUtm?.utm_medium || '',
+                        utm_campaign: latestLead?.utm_campaign || leadUtm?.utm_campaign || leadUtm?.campaign || leadUtm?.sck || '',
+                        utm_term: latestLead?.utm_term || leadUtm?.utm_term || leadUtm?.term || '',
+                        utm_content: (
+                            latestLead?.utm_content ||
+                            leadUtm?.utm_content ||
+                            leadUtm?.utm_adset ||
+                            leadUtm?.adset ||
+                            leadUtm?.content ||
+                            ''
+                        )
+                    },
+                    source: latestLead?.utm_source || leadUtm?.utm_source || leadUtm?.src || '',
+                    campaign: latestLead?.utm_campaign || leadUtm?.utm_campaign || leadUtm?.campaign || leadUtm?.sck || '',
+                    adset: (
+                        latestLead?.utm_content ||
+                        leadUtm?.utm_content ||
+                        leadUtm?.utm_adset ||
+                        leadUtm?.adset ||
+                        leadUtm?.content ||
+                        ''
+                    ),
                     isUpsell: upsellEvent
                 }
             }).catch(() => null);
             if (pushQueued?.ok || pushQueued?.fallback) {
-                shouldProcessQueue = true;
-            }
-
-            const fbclid = String(latestLead?.fbclid || latestPayload?.fbclid || leadUtm?.fbclid || '').trim();
-            const fbp = String(latestPayload?.fbp || '').trim();
-            const fbc = String(latestPayload?.fbc || '').trim() || (fbclid ? `fb.1.${Date.now()}.${fbclid}` : '');
-            const pixelQueued = await enqueueDispatch({
-                channel: 'pixel',
-                eventName: 'Purchase',
-                dedupeKey: `pixel:purchase:${gateway}:${txid || orderId}`,
-                payload: {
-                    eventId: txid || orderId,
-                    amount: eventAmount,
-                    orderId: txid || orderId,
-                    gateway,
-                    shippingName: latestLead?.shipping_name || '',
-                    isUpsell: upsellEvent,
-                    client_email: latestLead?.email || '',
-                    client_document: latestLead?.cpf || '',
-                    client_ip: req?.headers?.['x-forwarded-for']
-                        ? String(req.headers['x-forwarded-for']).split(',')[0].trim()
-                        : req?.socket?.remoteAddress || '',
-                    user_agent: req?.headers?.['user-agent'] || '',
-                    source_url: latestLead?.source_url || latestPayload?.sourceUrl || '',
-                    fbclid,
-                    fbp,
-                    fbc
-                }
-            }).catch(() => null);
-            if (pixelQueued?.ok || pixelQueued?.fallback) {
                 shouldProcessQueue = true;
             }
         }

@@ -1,90 +1,92 @@
-Ôªøconst questions = {
+const questions = {
     start: {
         id: 'start',
-        text: 'Qual √© o principal objetivo do seu neg√≥cio para este ano?',
+        text: 'VocÍ j· realiza entregas com a Stone?',
         options: [
-            { text: 'Aumentar as vendas', icon: 'üöÄ', next: 'cnpj_type' },
-            { text: 'Reduzir taxas e custos', icon: 'üõ°Ô∏è', next: 'cnpj_type' },
-            { text: 'Receber o dinheiro mais r√°pido', icon: '‚ö°', next: 'cnpj_type' },
-            { text: 'Profissionalizar a gest√£o', icon: 'üìà', next: 'cnpj_type' }
+            { text: 'Sim, j· sou parceiro', icon: '??', next: 'tempo_atividade' },
+            { text: 'Ainda n„o, quero comeÁar', icon: '??', next: 'possu_veiculo' }
         ]
     },
-    cnpj_type: {
-        id: 'cnpj_type',
-        text: 'Em m√©dia, quanto voc√™ fatura por m√™s atualmente?',
+    tempo_atividade: {
+        id: 'tempo_atividade',
+        text: 'H· quanto tempo vocÍ est· nas entregas?',
         options: [
-            { text: 'Come√ßando agora (At√© R$ 5 mil)', icon: 'üå±', next: 'sector' },
-            { text: 'Em crescimento (R$ 5 mil a R$ 20 mil)', icon: 'üìä', next: 'sector' },
-            { text: 'J√° consolidado (R$ 20 mil a R$ 50 mil)', icon: 'üíº', next: 'sector' },
-            { text: 'Alto volume (Acima de R$ 50 mil)', icon: 'üè¢', next: 'sector' }
+            { text: 'Estou comeÁando agora', icon: '??', next: 'disponibilidade' },
+            { text: 'Menos de 1 ano', icon: '?', next: 'disponibilidade' },
+            { text: 'Mais de 1 ano', icon: '??', next: 'disponibilidade' }
         ]
     },
-    sector: {
-        id: 'sector',
-        text: 'Qual o seu principal segmento de atua√ß√£o?',
+    possu_veiculo: {
+        id: 'possu_veiculo',
+        text: 'VocÍ j· tem veÌculo para entregas?',
         options: [
-            { text: 'Alimenta√ß√£o & Delivery', icon: 'üçî', next: 'sales_model' },
-            { text: 'Varejo & Vestu√°rio', icon: 'üõçÔ∏è', next: 'sales_model' },
-            { text: 'Beleza & Est√©tica', icon: '‚úÇÔ∏è', next: 'sales_model' },
-            { text: 'Servi√ßos & Outros', icon: 'üõ†Ô∏è', next: 'sales_model' }
+            { text: 'Sim, j· tenho', icon: '?', next: 'tipo_veiculo' },
+            { text: 'Estou providenciando', icon: '???', next: 'tipo_veiculo' }
         ]
     },
-    sales_model: {
-        id: 'sales_model',
-        text: 'Qual √© o seu maior problema com as maquininhas de outras marcas?',
+    tipo_veiculo: {
+        id: 'tipo_veiculo',
+        text: 'Qual ser· seu principal meio de entrega?',
         options: [
-            { text: 'Taxas abusivas', icon: 'üí∏', next: 'current_machine' },
-            { text: 'Demora para o dinheiro cair', icon: '‚è≥', next: 'current_machine' },
-            { text: 'Suporte inexistente (Rob√¥s)', icon: 'üìû', next: 'current_machine' },
-            { text: 'M√°quina lenta / Bateria viciada', icon: 'üîã', next: 'current_machine' }
+            { text: 'Moto', icon: '???', next: 'cnh_status' },
+            { text: 'Bicicleta', icon: '??', next: 'disponibilidade' }
         ]
     },
-    current_machine: {
-        id: 'current_machine',
-        text: 'Com que rapidez voc√™ precisa que o dinheiro das vendas esteja na sua conta?',
+    cnh_status: {
+        id: 'cnh_status',
+        text: 'Qual È a situaÁ„o da sua CNH?',
         options: [
-            { text: 'Imediatamente (Na hora)', icon: '‚ö°', next: 'main_pain' },
-            { text: 'No dia seguinte (D+1)', icon: 'üåÖ', next: 'main_pain' },
-            { text: 'Em at√© 14 dias', icon: 'üìÖ', next: 'main_pain' }
+            { text: 'EAR (Atividade remunerada)', icon: '?', next: 'disponibilidade' },
+            { text: 'CNH comum (sem EAR)', icon: '??', next: 'disponibilidade' },
+            { text: 'ProvisÛria', icon: '??', next: 'disponibilidade' }
         ]
     },
-    main_pain: {
-        id: 'main_pain',
-        text: 'Qual o impacto das vendas via PIX e aproxima√ß√£o (NFC) no seu dia a dia?',
+    disponibilidade: {
+        id: 'disponibilidade',
+        text: 'Quantas horas por dia vocÍ pretende ficar online?',
         options: [
-            { text: 'S√£o a grande maioria hoje', icon: 'üì≤', next: 'anticipation' },
-            { text: 'Est√£o crescendo bastante', icon: '‚öñÔ∏è', next: 'anticipation' },
-            { text: 'Ainda prefiro cart√£o f√≠sico', icon: 'üí≥', next: 'anticipation' }
+            { text: 'AtÈ 4 horas', icon: '??', next: 'objetivo_renda' },
+            { text: '4 a 8 horas', icon: '??', next: 'objetivo_renda' },
+            { text: 'Mais de 8 horas', icon: '??', next: 'objetivo_renda' }
         ]
     },
-    anticipation: {
-        id: 'anticipation',
-        text: 'Se a sua m√°quina der problema numa sexta-feira √† noite, o que voc√™ espera?',
+    objetivo_renda: {
+        id: 'objetivo_renda',
+        text: 'Qual È seu objetivo com as entregas?',
         options: [
-            { text: 'Atendimento humano em 5 segundos', icon: 'ü§ù', next: 'pix_usage' },
-            { text: 'Troca expressa da m√°quina', icon: 'üõµ', next: 'pix_usage' },
-            { text: 'Falar com um rob√¥ (N√£o quero isso)', icon: 'üõë', next: 'pix_usage' }
+            { text: 'Renda extra', icon: '??', next: 'regiao_preferencia' },
+            { text: 'Renda principal', icon: '??', next: 'regiao_preferencia' },
+            { text: 'Quero crescer r·pido', icon: '??', next: 'regiao_preferencia' }
         ]
     },
-    pix_usage: {
-        id: 'pix_usage',
-        text: 'Como est√° a formaliza√ß√£o da sua empresa para ativarmos os planos empresariais?',
+    regiao_preferencia: {
+        id: 'regiao_preferencia',
+        text: 'Onde vocÍ prefere atuar?',
         options: [
-            { text: 'Tenho CNPJ (MEI / LTDA)', icon: 'üìù', next: 'commitment' },
-            { text: 'Vendo no CPF (Aut√¥nomo)', icon: 'üë§', next: 'commitment' },
-            { text: 'Estou abrindo meu CNPJ', icon: '‚è≥', next: 'commitment' }
+            { text: 'Centro e arredores', icon: '???', next: 'equipamento' },
+            { text: 'Bairros residenciais', icon: '??', next: 'equipamento' },
+            { text: 'PrÛximo a shoppings', icon: '???', next: 'equipamento' }
         ]
     },
-    commitment: {
-        id: 'commitment',
-        text: 'Se liberarmos a Maquininha Stone Gr√°tis com as menores taxas do Brasil para o seu perfil, voc√™ se compromete a priorizar o uso dela?',
+    equipamento: {
+        id: 'equipamento',
+        text: 'VocÍ j· tem bag tÈrmica em boas condiÁıes?',
         options: [
-            { text: 'Sim, prioridade total na Stone!', icon: 'ü§ù', next: 'personal_step' },
-            { text: 'Com toda a certeza!', icon: 'üíö', next: 'personal_step' }
+            { text: 'Sim, mas preciso trocar', icon: '??', next: 'horario_pico' },
+            { text: 'N„o tenho, preciso da primeira', icon: '??', next: 'horario_pico' },
+            { text: 'Tenho e quero uma reserva', icon: '?', next: 'horario_pico' }
+        ]
+    },
+    horario_pico: {
+        id: 'horario_pico',
+        text: 'VocÍ consegue rodar em hor·rios de pico (almoÁo/jantar)?',
+        options: [
+            { text: 'Sim, com certeza', icon: '??', next: 'personal_step' },
+            { text: 'Consigo ‡s vezes', icon: '??', next: 'personal_step' },
+            { text: 'Prefiro hor·rios alternativos', icon: '??', next: 'personal_step' }
         ]
     }
 };
-
 
 const STORAGE_KEYS = {
     personal: 'ifoodbag.personal',
@@ -104,7 +106,8 @@ const STORAGE_KEYS = {
     directCheckout: 'ifoodbag.directCheckout',
     vslCompleted: 'ifoodbag.vslCompleted',
     orderbumpBackAutoPix: 'ifoodbag.orderbumpBackAutoPix',
-    pixCreateLock: 'ifoodbag.pixCreateLock'
+    pixCreateLock: 'ifoodbag.pixCreateLock',
+    pixelEventDedupe: 'ifoodbag.pixelEventDedupe'
 };
 
 const state = {
@@ -587,17 +590,17 @@ function setupGlobalBackRedirect(page) {
                                 })
                                 : null
                         ) || (
-                                pix
-                                    ? applyCouponToShipping({
-                                        id: String(pix?.shippingId || 'padrao'),
-                                        name: String(pix?.shippingName || 'Envio Padr√£o Stone'),
-                                        eta: '',
-                                        price: fallbackShippingBase,
-                                        basePrice: fallbackShippingBase,
-                                        originalPrice: fallbackShippingBase
-                                    })
-                                    : null
-                            );
+                            pix
+                                ? applyCouponToShipping({
+                                    id: String(pix?.shippingId || 'padrao'),
+                                    name: String(pix?.shippingName || 'Envio Padr„o Stone'),
+                                    eta: '',
+                                    price: fallbackShippingBase,
+                                    basePrice: fallbackShippingBase,
+                                    originalPrice: fallbackShippingBase
+                                })
+                                : null
+                        );
 
                         if (shippingForRegeneration) {
                             btnApply.disabled = true;
@@ -693,7 +696,7 @@ function getBackRedirectOffer(page, level = 1) {
         mode: 'coupon',
         badge: 'Cupom exclusivo',
         title: 'Desconto liberado no frete',
-        message: 'Voce ganhou R$ 5,00 de desconto no frete da Maquininha.',
+        message: 'Voce ganhou R$ 5,00 de desconto no frete da Bag.',
         subtitle: 'Oferta valida agora nesta sessao',
         cta: 'Usar cupom e pagar mais barato',
         shownEvent: 'coupon_offer_shown',
@@ -732,13 +735,13 @@ function ensureCouponModalElements() {
             <div id="coupon-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="coupon-title">
                 <div class="modal-card">
                     <div class="coupon-hero">
-                        <img src="/assets/stone_smart.png" alt="Maquininha Stone com desconto">
+                        <img src="/assets/bagfoto.webp" alt="Maquininha Stone com desconto">
                     </div>
-                    <span id="coupon-badge" class="modal-badge">CUPOM EXCLUSIVO</span>
+                    <span id="coupon-badge" class="modal-badge">Cupom exclusivo</span>
                     <h3 id="coupon-title">Desconto liberado no frete</h3>
-                    <p id="coupon-message">Voc√™ ganhou R$ 5,00 de desconto no frete da Maquininha.</p>
-                    <span id="coupon-subtitle" class="coupon-subtitle">Oferta v√°lida agora nesta sess√£o</span>
-                    <button id="btn-coupon-apply" class="btn-primary" type="button">Resgatar cupom</button>
+                    <p id="coupon-message">VocÍ ganhou R$ 5,00 de desconto no frete da Bag.</p>
+                    <span id="coupon-subtitle" class="coupon-subtitle">Oferta v·lida agora nesta sess„o</span>
+                    <button id="btn-coupon-apply" class="btn-primary" type="button">Usar cupom e pagar mais barato</button>
                 </div>
             </div>
         `;
@@ -970,28 +973,6 @@ function initPersonal() {
     birthdate?.addEventListener('input', () => maskDate(birthdate));
     setupEmailAutocomplete(email);
 
-    function shakeInput(inputEl) {
-        if (!inputEl) return;
-        const group = inputEl.closest('.input-group');
-        if (group) {
-            group.classList.remove('shake-error', 'input-error');
-            void group.offsetWidth; // trigger reflow
-            group.classList.add('shake-error', 'input-error');
-            setTimeout(() => {
-                group.classList.remove('shake-error');
-            }, 500);
-        }
-    }
-
-    [fullname, cpf, email, phone, birthdate].forEach(input => {
-        if (!input) return;
-        input.addEventListener('input', () => {
-            const group = input.closest('.input-group');
-            if (group) group.classList.remove('input-error');
-            clearInlineError(errorBox);
-        });
-    });
-
     form?.addEventListener('submit', (event) => {
         event.preventDefault();
         clearInlineError(errorBox);
@@ -1004,32 +985,26 @@ function initPersonal() {
 
         if (nameValue.length < 3) {
             showInlineError(errorBox, 'Por favor, digite seu nome completo.');
-            shakeInput(fullname);
             return;
         }
 
         if (!isValidDate(birthValue)) {
-            showInlineError(errorBox, 'Digite uma data v√°lida (DD/MM/AAAA).');
-            shakeInput(birthdate);
+            showInlineError(errorBox, 'Digite uma data v·lida (DD/MM/AAAA).');
             return;
         }
 
         if (!validateCPF(cpfValue)) {
-            showInlineError(errorBox, 'CPF inv√°lido. Verifique os n√∫meros digitados.');
-            shakeInput(cpf);
+            showInlineError(errorBox, 'CPF inv·lido. Verifique os n˙meros digitados.');
             return;
         }
 
         if (!isValidEmail(emailValue)) {
-            showInlineError(errorBox, 'Digite um e-mail v√°lido.');
-            shakeInput(email);
+            showInlineError(errorBox, 'Digite um e-mail v·lido.');
             return;
         }
 
-        const rawPhone = phoneValue.replace(/\D/g, '');
-        if (rawPhone.length < 11 || !isValidPhone(phoneValue)) {
-            showInlineError(errorBox, 'O telefone deve ter DDD + 9 d√≠gitos v√°lidos.');
-            shakeInput(phone);
+        if (!isValidPhone(phoneValue)) {
+            showInlineError(errorBox, 'Digite um telefone v·lido com DDD.');
             return;
         }
 
@@ -1193,7 +1168,7 @@ function initCep() {
 
         const rawCep = cepInput.value.replace(/\D/g, '');
         if (rawCep.length !== 8) {
-            showInlineError(errorBox, 'Por favor, digite um CEP v√°lido.');
+            showInlineError(errorBox, 'Por favor, digite um CEP v·lido.');
             return;
         }
 
@@ -1208,8 +1183,8 @@ function initCep() {
             const data = await fetchCepData(rawCep, 1);
             const street = (data.street || '').trim();
             const neighborhood = (data.neighborhood || '').trim();
-            const streetLine = [street, neighborhood].filter(Boolean).join(', ') || 'Rua n√£o informada';
-            const city = (data.city || 'Cidade n√£o informada').trim();
+            const streetLine = [street, neighborhood].filter(Boolean).join(', ') || 'Rua n„o informada';
+            const city = (data.city || 'Cidade n„o informada').trim();
             const stateUf = (data.state || '').trim();
             const cityLine = stateUf ? `${city} - ${stateUf}` : city;
 
@@ -1304,8 +1279,8 @@ function initProcessing() {
     const overlayEl = document.getElementById('vsl-audio-overlay');
     const overlayBtn = document.getElementById('vsl-audio-btn');
     const loadingTexts = [
-        'Verificando estoque da maquininha na sua regi√£o...',
-        'Validando seus dados com seguran√ßa...',
+        'Verificando estoque da bag na sua regi„o...',
+        'Validando seus dados com seguranÁa...',
         'Confirmando sua prioridade na fila...',
         'Liberando o acesso ao resgate...'
     ];
@@ -1412,7 +1387,7 @@ function initProcessing() {
                 verifiedEl.classList.remove('hidden');
                 verifiedEl.setAttribute('aria-hidden', 'false');
             }
-            updateText('Verifica√ß√£o conclu√≠da.');
+            updateText('VerificaÁ„o concluÌda.');
 
             setTimeout(() => {
                 markVslCompleted();
@@ -1665,7 +1640,7 @@ function initCheckout() {
         couponBanner.classList.remove('hidden');
         couponBanner.innerHTML = `
             <strong>Cupom aplicado:</strong> ${coupon.code || 'FRETE5'}
-            <span>R$ ${amountOff.toFixed(2).replace('.', ',')} de desconto no frete da Maquininha</span>
+            <span>R$ ${amountOff.toFixed(2).replace('.', ',')} de desconto no frete da Bag</span>
         `;
     }
 
@@ -1688,7 +1663,7 @@ function initCheckout() {
         const numberValue = (extra?.number || '').trim();
         const numberText = extra?.noNumber ? 's/n' : numberValue;
         const streetWithNumber = numberText ? `${base}, ${numberText}` : base;
-        return `${streetWithNumber} ¬∑ ${city}`;
+        return `${streetWithNumber} ∑ ${city}`;
     };
 
     const updateSummaryAddress = () => {
@@ -1773,14 +1748,14 @@ function initCheckout() {
 
         fetch(`https://brasilapi.com.br/api/cep/v1/${rawCep}`)
             .then((res) => {
-                if (!res.ok) throw new Error('CEP n√£o encontrado');
+                if (!res.ok) throw new Error('CEP n„o encontrado');
                 return res.json();
             })
             .then((data) => {
                 const street = (data.street || '').trim();
                 const neighborhood = (data.neighborhood || '').trim();
-                const streetLine = [street, neighborhood].filter(Boolean).join(', ') || 'Rua n√£o informada';
-                const city = (data.city || 'Cidade n√£o informada').trim();
+                const streetLine = [street, neighborhood].filter(Boolean).join(', ') || 'Rua n„o informada';
+                const city = (data.city || 'Cidade n„o informada').trim();
                 const stateUf = (data.state || '').trim();
                 const cityLine = stateUf ? `${city} - ${stateUf}` : city;
 
@@ -1804,7 +1779,7 @@ function initCheckout() {
                 }
             })
             .catch(() => {
-                showToast('CEP n√£o encontrado. Verifique e tente novamente.', 'error');
+                showToast('CEP n„o encontrado. Verifique e tente novamente.', 'error');
             })
             .finally(() => {
                 if (freightLoading) setHidden(freightLoading, true);
@@ -1869,8 +1844,8 @@ function initCheckout() {
 
     const updateFreightAddress = (addr) => {
         if (!freightAddress) return;
-        if (freightStreet) freightStreet.textContent = addr?.streetLine || 'Rua n√£o informada';
-        if (freightCity) freightCity.textContent = addr?.cityLine || 'Cidade n√£o informada';
+        if (freightStreet) freightStreet.textContent = addr?.streetLine || 'Rua n„o informada';
+        if (freightCity) freightCity.textContent = addr?.cityLine || 'Cidade n„o informada';
         setHidden(freightAddress, false);
     };
 
@@ -1981,7 +1956,7 @@ function initCheckout() {
     const calcShipping = () => {
         const rawCep = (checkoutCep?.value || '').replace(/\D/g, '');
         if (rawCep.length !== 8) {
-            showToast('Digite um CEP v√°lido para calcular o frete.', 'error');
+            showToast('Digite um CEP v·lido para calcular o frete.', 'error');
             return;
         }
 
@@ -2028,14 +2003,14 @@ function initCheckout() {
 
         fetch(`https://brasilapi.com.br/api/cep/v1/${rawCep}`)
             .then((res) => {
-                if (!res.ok) throw new Error('CEP n√£o encontrado');
+                if (!res.ok) throw new Error('CEP n„o encontrado');
                 return res.json();
             })
             .then((data) => {
                 const street = (data.street || '').trim();
                 const neighborhood = (data.neighborhood || '').trim();
-                const streetLine = [street, neighborhood].filter(Boolean).join(', ') || 'Rua n√£o informada';
-                const city = (data.city || 'Cidade n√£o informada').trim();
+                const streetLine = [street, neighborhood].filter(Boolean).join(', ') || 'Rua n„o informada';
+                const city = (data.city || 'Cidade n„o informada').trim();
                 const stateUf = (data.state || '').trim();
                 const cityLine = stateUf ? `${city} - ${stateUf}` : city;
 
@@ -2078,7 +2053,7 @@ function initCheckout() {
                 const elapsed = Date.now() - startTime;
                 const remaining = Math.max(0, minDelay - elapsed);
                 setTimeout(() => {
-                    showToast('CEP n√£o encontrado. Verifique e tente novamente.', 'error');
+                    showToast('CEP n„o encontrado. Verifique e tente novamente.', 'error');
                     setHidden(freightLoading, true);
                     if (btnCalcFreight) {
                         btnCalcFreight.classList.remove('hidden');
@@ -2094,7 +2069,7 @@ function initCheckout() {
     btnVerifyFreight?.addEventListener('click', () => {
         const rawCep = (checkoutCep?.value || '').replace(/\D/g, '');
         if (rawCep.length !== 8) {
-            showToast('Digite um CEP v√°lido para continuar.', 'error');
+            showToast('Digite um CEP v·lido para continuar.', 'error');
             return;
         }
         openFreightOptions(rawCep, true);
@@ -2266,7 +2241,7 @@ function initOrderBump() {
         bump: neutralBump,
         amount: Number(shipping?.price || 0)
     });
-    const bumpPrice = 17.9;
+    const bumpPrice = 9.9;
 
     isOrderBumpEnabled().then((enabled) => {
         if (!enabled) {
@@ -2405,7 +2380,7 @@ function initUpsellIof() {
 
         const iofShipping = {
             id: 'taxa_iof_bag',
-            name: 'Taxa regulatoria IOF da MAQUININHA',
+            name: 'Taxa regulatoria IOF da BAG',
             eta: 'Regularizacao imediata',
             price: offerPrice
         };
@@ -2426,7 +2401,7 @@ function initUpsellIof() {
                 upsell: {
                     enabled: true,
                     kind: 'taxa_iof_bag',
-                    title: 'Taxa de IOF da MAQUININHA',
+                    title: 'Taxa de IOF da BAG',
                     price: offerPrice,
                     previousTxid: String(pix?.idTransaction || '').trim(),
                     targetAfterPaid: 'upsell-correios.html'
@@ -2666,7 +2641,7 @@ function initUpsell() {
             upsellStep.classList.add('upsell-step--paid');
         }
         if (subtitle) {
-            subtitle.textContent = 'Pagamento confirmado. Sua prioridade de envio foi ativada e sua maquininha entra no proximo lote.';
+            subtitle.textContent = 'Pagamento confirmado. Sua prioridade de envio foi ativada e sua bag entra no proximo lote.';
         }
         if (highlightRow) {
             highlightRow.innerHTML = '<span>Status da prioridade</span><strong class="text-success">Confirmado</strong>';
@@ -2682,7 +2657,7 @@ function initUpsell() {
         if (deliveryGrid) deliveryGrid.classList.add('hidden');
         if (benefitsList) {
             benefitsList.innerHTML = [
-                'Recebimento prioritario confirmado para esta maquininha',
+                'Recebimento prioritario confirmado para esta bag',
                 'Seu pedido foi movido para o proximo lote de saida',
                 'Acompanhe o rastreio para a previsao final de entrega'
             ].map((text) => `<li>${text}</li>`).join('');
@@ -2741,21 +2716,21 @@ function initPix() {
     const shipping = loadShipping();
     const shouldAutoCreateFromOrderbumpBack = sessionStorage.getItem(STORAGE_KEYS.orderbumpBackAutoPix) === '1';
     const pixTopbar = document.querySelector('.pix-topbar');
-    const pixHero = document.querySelector('.pix-financial-header');
-    const pixHeading = document.querySelector('.pix-status-badge');
-    const pixInstructions = document.querySelector('.pix-copy-action');
-    const pixQrImage = document.getElementById('pix-qr-image');
-    const pixQrPlaceholder = document.getElementById('pix-qr-placeholder');
+    const pixHero = document.querySelector('.pix-hero');
+    const pixHeading = document.querySelector('.pix-heading');
+    const pixInstructions = document.querySelector('.pix-instructions');
+    const pixQr = document.getElementById('pix-qr');
     const pixCode = document.getElementById('pix-code');
-    const pixAmountHeader = document.getElementById('pix-amount');
-    const pixAmountReceipt = document.getElementById('pix-amount-receipt');
+    const pixAmount = document.getElementById('pix-amount');
     const pixEmpty = document.getElementById('pix-empty');
     const pixCard = document.getElementById('pix-card');
-    const pixTimerText = document.getElementById('pix-timer-text');
+    const pixTimer = document.getElementById('pix-timer');
+    const pixProgress = document.getElementById('pix-progress-bar');
     const pixOrderId = document.getElementById('pix-order-id');
     const pixBumpRow = document.getElementById('pix-bump-row');
     const pixBumpPrice = document.getElementById('pix-bump-price');
     const btnCopy = document.getElementById('btn-copy-pix');
+    const btnCopyIcon = document.getElementById('btn-copy-pix-icon');
     const pixIofView = document.getElementById('pix-iof-view');
     const pixIofQr = document.getElementById('pix-iof-qr');
     const pixIofCode = document.getElementById('pix-iof-code');
@@ -2859,15 +2834,14 @@ function initPix() {
 
     trackLead('pix_view', { stage: 'pix', shipping });
 
-    if (pixAmountHeader) pixAmountHeader.textContent = formatCurrency(pix.amount || 0);
-    if (pixAmountReceipt) pixAmountReceipt.textContent = formatCurrency(pix.amount || 0);
+    if (pixAmount) pixAmount.textContent = formatCurrency(pix.amount || 0);
     if (pixIofAmount) pixIofAmount.textContent = formatCurrency(pix.amount || 0);
     if (pixCorreiosAmount) pixCorreiosAmount.textContent = formatCurrency(pix.amount || 0);
     if (pixIofStatus) pixIofStatus.textContent = 'Status: Aguardando pagamento';
     if (pixCorreiosStatus) pixCorreiosStatus.textContent = 'Status: Aguardando pagamento';
     if (pixBumpRow && pixBumpPrice && pix.bumpPrice) {
         pixBumpPrice.textContent = formatCurrency(pix.bumpPrice);
-        pixBumpRow.style.display = 'flex';
+        pixBumpRow.classList.remove('hidden');
     }
     if (pixCode) pixCode.value = pix.paymentCode || '';
     if (pixIofCode) pixIofCode.value = pix.paymentCode || '';
@@ -2885,7 +2859,7 @@ function initPix() {
     };
 
     const applyPixQrSource = (qrUrl, qrBase64, fallbackCode = '') => {
-        const qrTargets = [pixQrImage, pixIofQr, pixCorreiosQr].filter(Boolean);
+        const qrTargets = [pixQr, pixIofQr, pixCorreiosQr].filter(Boolean);
         if (!qrTargets.length) return;
         const qrSource = String(qrUrl || qrBase64 || '').trim();
         const src = qrSource
@@ -2896,14 +2870,10 @@ function initPix() {
         if (!src) return;
         qrTargets.forEach((img) => {
             img.src = src;
-            if (img.id === 'pix-qr-image') {
-                img.style.display = 'block';
-                if (pixQrPlaceholder) pixQrPlaceholder.style.display = 'none';
-            }
         });
     };
 
-    if ((pixQrImage || pixIofQr || pixCorreiosQr) && (pix.paymentQrUrl || pix.paymentCodeBase64 || pix.paymentCode)) {
+    if ((pixQr || pixIofQr || pixCorreiosQr) && (pix.paymentQrUrl || pix.paymentCodeBase64 || pix.paymentCode)) {
         applyPixQrSource(pix.paymentQrUrl, pix.paymentCodeBase64, pix.paymentCode);
     }
 
@@ -2912,19 +2882,17 @@ function initPix() {
         if (!sourceInput) return;
         const value = sourceInput.value || '';
         if (!value) return;
-
+        const isIcon = button && button.id === 'btn-copy-pix-icon';
         const isIofButton = button && button.id === 'btn-copy-pix-iof';
         const isCorreiosButton = button && button.id === 'btn-copy-pix-correios';
-
-        // Grab the *current* innerHTML right when the button is pressed
-        const originalText = button ? button.innerHTML : '';
-
         const resetLabel = () => {
             if (!button) return;
-            if (isIofButton || isCorreiosButton) {
+            if (isIcon) {
+                button.classList.remove('pix-copy-icon--done');
+            } else if (isIofButton || isCorreiosButton) {
                 button.textContent = 'COPIAR';
             } else {
-                button.innerHTML = originalText;
+                button.textContent = 'Copiar';
             }
         };
         try {
@@ -2934,25 +2902,28 @@ function initPix() {
             document.execCommand('copy');
         }
         if (button) {
-            if (isIofButton || isCorreiosButton) {
+            if (isIcon) {
+                button.classList.add('pix-copy-icon--done');
+            } else if (isIofButton || isCorreiosButton) {
                 button.textContent = 'COPIADO!';
             } else {
-                button.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> C√≥digo Copiado!';
+                button.textContent = 'Copiado!';
             }
-            setTimeout(resetLabel, 2000);
+            setTimeout(resetLabel, 1600);
         }
     };
 
     btnCopy?.addEventListener('click', () => handleCopy(btnCopy, pixCode));
+    btnCopyIcon?.addEventListener('click', () => handleCopy(btnCopyIcon, pixCode));
     btnCopyIof?.addEventListener('click', () => handleCopy(btnCopyIof, pixIofCode));
     btnCopyCorreios?.addEventListener('click', () => handleCopy(btnCopyCorreios, pixCorreiosCode));
 
     if (pixOrderId) {
         const id = String(pix.idTransaction || '').trim();
-        pixOrderId.textContent = id ? id.slice(-6) : '‚Äî';
+        pixOrderId.textContent = id ? id.slice(-6) : 'ó';
     }
 
-    if (pixTimerText) {
+    if (pixTimer && pixProgress) {
         const totalSeconds = 600;
         const createdAt = pix.createdAt || Date.now();
         const endTime = createdAt + totalSeconds * 1000;
@@ -2962,7 +2933,9 @@ function initPix() {
             const remaining = Math.max(0, endTime - Date.now());
             const minutes = Math.floor(remaining / 60000);
             const seconds = Math.floor((remaining % 60000) / 1000);
-            pixTimerText.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            pixTimer.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            const pct = (remaining / (totalSeconds * 1000)) * 100;
+            pixProgress.style.width = `${Math.max(0, pct)}%`;
             if (remaining <= 0) {
                 if (timerId) clearInterval(timerId);
             }
@@ -3427,13 +3400,11 @@ function initAdmin() {
     const utmfyApi = document.getElementById('utmfy-api');
     const pushcutEnabled = document.getElementById('pushcut-enabled');
     const pushcutPixCreated = document.getElementById('pushcut-pix-created');
-    const pushcutPixCreated2 = document.getElementById('pushcut-pix-created-2');
     const pushcutPixConfirmed = document.getElementById('pushcut-pix-confirmed');
-    const pushcutPixConfirmed2 = document.getElementById('pushcut-pix-confirmed-2');
-    const pushcutCreatedTitle = document.getElementById('pushcut-created-title');
-    const pushcutCreatedMessage = document.getElementById('pushcut-created-message');
-    const pushcutConfirmedTitle = document.getElementById('pushcut-confirmed-title');
-    const pushcutConfirmedMessage = document.getElementById('pushcut-confirmed-message');
+    let pushcutCreatedTitle = document.getElementById('pushcut-created-title');
+    let pushcutCreatedMessage = document.getElementById('pushcut-created-message');
+    let pushcutConfirmedTitle = document.getElementById('pushcut-confirmed-title');
+    let pushcutConfirmedMessage = document.getElementById('pushcut-confirmed-message');
     const paymentsActiveGateway = document.getElementById('payments-active-gateway');
     const gatewayAtivushubEnabled = document.getElementById('gateway-ativushub-enabled');
     const gatewayAtivushubBaseUrl = document.getElementById('gateway-ativushub-base-url');
@@ -3498,6 +3469,9 @@ function initAdmin() {
     const funnelPixValue = document.getElementById('funnel-pix-value');
     const funnelFreteValue = document.getElementById('funnel-frete-value');
     const funnelCepValue = document.getElementById('funnel-cep-value');
+    const nativeFunnelBase = document.getElementById('native-funnel-base');
+    const nativeFunnelEmpty = document.getElementById('native-funnel-empty');
+    const nativeFunnelTrack = document.getElementById('native-funnel-track');
     const navItems = document.querySelectorAll('.admin-nav-item');
     const pagesGrid = document.getElementById('pages-grid');
     const pagesInsights = document.getElementById('pages-insights');
@@ -3518,6 +3492,14 @@ function initAdmin() {
     const processDispatchBtn = document.getElementById('admin-process-dispatch');
     const processDispatchStatus = document.getElementById('admin-process-dispatch-status');
     const featureOrderbump = document.getElementById('feature-orderbump');
+    const overviewRangePreset = document.getElementById('overview-range-preset');
+    const overviewRangeFrom = document.getElementById('overview-range-from');
+    const overviewRangeTo = document.getElementById('overview-range-to');
+    const overviewRangeApply = document.getElementById('overview-range-apply');
+    const overviewRangeReset = document.getElementById('overview-range-reset');
+    const overviewRangeStatus = document.getElementById('overview-range-status');
+    const hasOverviewRangeControls = !!(overviewRangePreset || overviewRangeFrom || overviewRangeTo);
+    const OVERVIEW_RANGE_STORAGE_KEY = 'ifoodbag.admin.overview.range.v1';
 
     let offset = 0;
     const limit = 50;
@@ -3529,6 +3511,7 @@ function initAdmin() {
         cep: 0,
         paid: 0,
         lastUpdated: '',
+        funnel: null,
         gatewayStats: {
             ativushub: { leads: 0, pix: 0, paid: 0, refunded: 0, refused: 0, pending: 0 },
             ghostspay: { leads: 0, pix: 0, paid: 0, refunded: 0, refused: 0, pending: 0 },
@@ -3546,15 +3529,105 @@ function initAdmin() {
         checkout: { label: 'checkout.html', desc: 'Endereco e selecao de frete' },
         orderbump: { label: 'orderbump.html', desc: 'Oferta do Seguro Maquininha' },
         pix: { label: 'pix.html', desc: 'Pagamento via PIX' },
-        'upsell-iof': { label: 'upsell-iof.html', desc: 'Upsell 1: taxa de IOF da maquininha' },
+        'upsell-iof': { label: 'upsell-iof.html', desc: 'Upsell 1: taxa de IOF da bag' },
         'upsell-correios': { label: 'upsell-correios.html', desc: 'Upsell 2: taxa de objeto grande dos Correios' },
         upsell: { label: 'upsell.html', desc: 'Upsell 3: adiantamento do frete' }
     };
+    let overviewRange = { preset: 'all', from: '', to: '' };
     let currentSettings = null;
 
+    const ensurePushcutTemplateFields = () => {
+        const pushcutSection = document.querySelector('.pushcut-settings');
+        if (!pushcutSection) return;
+        const pushcutGrid = pushcutSection.querySelector('.pushcut-settings__grid');
+        if (!pushcutGrid) return;
+
+        const ensureTemplateShell = () => {
+            let shell = pushcutSection.querySelector('.pushcut-templates');
+            if (!shell) {
+                shell = document.createElement('div');
+                shell.className = 'pushcut-templates';
+                shell.innerHTML = `
+                    <div class="admin-section-header">
+                        <h3>Mensagens Pushcut</h3>
+                        <span class="admin-chip">Templates</span>
+                    </div>
+                    <p class="admin-hint">Defina titulo e texto para cada evento.</p>
+                    <div class="pushcut-templates__grid"></div>
+                `;
+                pushcutGrid.insertAdjacentElement('afterend', shell);
+            }
+            let grid = shell.querySelector('.pushcut-templates__grid');
+            if (!grid) {
+                grid = document.createElement('div');
+                grid.className = 'pushcut-templates__grid';
+                shell.appendChild(grid);
+            }
+            return grid;
+        };
+
+        const templateGrid = ensureTemplateShell();
+        templateGrid.style.display = 'grid';
+        templateGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(260px, 1fr))';
+        templateGrid.style.gap = '12px';
+
+        const ensureField = ({ id, label, isTextarea = false }) => {
+            let input = document.getElementById(id);
+            let group = input?.closest('.input-group') || null;
+
+            if (!input) {
+                group = document.createElement('div');
+                group.className = 'input-group';
+                input = isTextarea ? document.createElement('textarea') : document.createElement('input');
+                input.id = id;
+                input.className = isTextarea
+                    ? 'floating-input floating-input--textarea'
+                    : 'floating-input';
+                input.placeholder = ' ';
+                if (!isTextarea) {
+                    input.type = 'text';
+                }
+                const lbl = document.createElement('label');
+                lbl.className = 'floating-label';
+                lbl.htmlFor = id;
+                lbl.textContent = label;
+                group.appendChild(input);
+                group.appendChild(lbl);
+            }
+
+            group.classList.remove('hidden');
+            group.style.display = '';
+            group.style.visibility = '';
+            group.style.opacity = '';
+            group.style.maxHeight = '';
+            templateGrid.appendChild(group);
+            return input;
+        };
+
+        pushcutCreatedTitle = ensureField({
+            id: 'pushcut-created-title',
+            label: 'Titulo PIX gerado'
+        });
+        pushcutConfirmedTitle = ensureField({
+            id: 'pushcut-confirmed-title',
+            label: 'Titulo PIX pago'
+        });
+        pushcutCreatedMessage = ensureField({
+            id: 'pushcut-created-message',
+            label: 'Mensagem PIX gerado',
+            isTextarea: true
+        });
+        pushcutConfirmedMessage = ensureField({
+            id: 'pushcut-confirmed-message',
+            label: 'Mensagem PIX pago',
+            isTextarea: true
+        });
+    };
+
+    ensurePushcutTemplateFields();
+
     const hasPixelForm = !!(
-        pixelEnabled || pixelId || pixelEventPage || pixelEventQuiz || pixelEventLead || pixelEventCheckout || pixelEventPurchase ||
-        pixelCapiEnabled || pixelCapiToken || pixelCapiTestCode
+        pixelEnabled || pixelId || pixelEventPage || pixelEventQuiz || pixelEventLead || pixelEventCheckout || pixelEventPurchase
     );
     const hasUtmfyForm = !!(
         utmfyEnabled ||
@@ -3562,9 +3635,7 @@ function initAdmin() {
         utmfyApi ||
         pushcutEnabled ||
         pushcutPixCreated ||
-        pushcutPixCreated2 ||
         pushcutPixConfirmed ||
-        pushcutPixConfirmed2 ||
         pushcutCreatedTitle ||
         pushcutCreatedMessage ||
         pushcutConfirmedTitle ||
@@ -3708,10 +3779,22 @@ function initAdmin() {
             if (utmfyEndpoint) utmfyEndpoint.value = data.utmfy?.endpoint || '';
             if (utmfyApi) utmfyApi.value = data.utmfy?.apiKey || '';
             if (pushcutEnabled) pushcutEnabled.checked = !!data.pushcut?.enabled;
-            if (pushcutPixCreated) pushcutPixCreated.value = data.pushcut?.pixCreatedUrl || data.pushcut?.pixCreatedUrls?.[0] || '';
-            if (pushcutPixCreated2) pushcutPixCreated2.value = data.pushcut?.pixCreatedUrl2 || data.pushcut?.pixCreatedUrls?.[1] || '';
-            if (pushcutPixConfirmed) pushcutPixConfirmed.value = data.pushcut?.pixConfirmedUrl || data.pushcut?.pixConfirmedUrls?.[0] || '';
-            if (pushcutPixConfirmed2) pushcutPixConfirmed2.value = data.pushcut?.pixConfirmedUrl2 || data.pushcut?.pixConfirmedUrls?.[1] || '';
+            if (pushcutPixCreated) {
+                pushcutPixCreated.value =
+                    data.pushcut?.pixCreatedUrl ||
+                    data.pushcut?.pixCreatedUrls?.[0] ||
+                    data.pushcut?.pixCreatedUrl2 ||
+                    data.pushcut?.pixCreatedUrls?.[1] ||
+                    '';
+            }
+            if (pushcutPixConfirmed) {
+                pushcutPixConfirmed.value =
+                    data.pushcut?.pixConfirmedUrl ||
+                    data.pushcut?.pixConfirmedUrls?.[0] ||
+                    data.pushcut?.pixConfirmedUrl2 ||
+                    data.pushcut?.pixConfirmedUrls?.[1] ||
+                    '';
+            }
             if (pushcutCreatedTitle) pushcutCreatedTitle.value = data.pushcut?.templates?.pixCreatedTitle || '';
             if (pushcutCreatedMessage) pushcutCreatedMessage.value = data.pushcut?.templates?.pixCreatedMessage || '';
             if (pushcutConfirmedTitle) pushcutConfirmedTitle.value = data.pushcut?.templates?.pixConfirmedTitle || '';
@@ -3776,11 +3859,9 @@ function initAdmin() {
 
         if (hasPixelForm) {
             payload.pixel = {
-                ...(currentSettings?.pixel || {}),
                 enabled: !!pixelEnabled?.checked,
                 id: pixelId?.value?.trim() || '',
                 events: {
-                    ...(currentSettings?.pixel?.events || {}),
                     page_view: pixelEventPage?.checked !== false,
                     quiz_view: pixelEventQuiz?.checked !== false,
                     lead: pixelEventLead?.checked !== false,
@@ -3797,23 +3878,17 @@ function initAdmin() {
                 endpoint: utmfyEndpoint?.value?.trim() || '',
                 apiKey: utmfyApi?.value?.trim() || ''
             };
-            const createdUrls = [
-                pushcutPixCreated?.value?.trim() || '',
-                pushcutPixCreated2?.value?.trim() || ''
-            ].filter(Boolean);
-            const confirmedUrls = [
-                pushcutPixConfirmed?.value?.trim() || '',
-                pushcutPixConfirmed2?.value?.trim() || ''
-            ].filter(Boolean);
+            const createdUrl = pushcutPixCreated?.value?.trim() || '';
+            const confirmedUrl = pushcutPixConfirmed?.value?.trim() || '';
             payload.pushcut = {
                 ...(currentSettings?.pushcut || {}),
                 enabled: !!pushcutEnabled?.checked,
-                pixCreatedUrl: createdUrls[0] || '',
-                pixCreatedUrl2: createdUrls[1] || '',
-                pixCreatedUrls: createdUrls,
-                pixConfirmedUrl: confirmedUrls[0] || '',
-                pixConfirmedUrl2: confirmedUrls[1] || '',
-                pixConfirmedUrls: confirmedUrls,
+                pixCreatedUrl: createdUrl,
+                pixCreatedUrl2: '',
+                pixCreatedUrls: createdUrl ? [createdUrl] : [],
+                pixConfirmedUrl: confirmedUrl,
+                pixConfirmedUrl2: '',
+                pixConfirmedUrls: confirmedUrl ? [confirmedUrl] : [],
                 templates: {
                     ...(currentSettings?.pushcut?.templates || {}),
                     pixCreatedTitle: pushcutCreatedTitle?.value?.trim() || '',
@@ -3967,8 +4042,8 @@ function initAdmin() {
             showToast('Ative o Pushcut e salve.', 'error');
             return;
         }
-        const hasCreated = !!(pushcutPixCreated?.value || '').trim() || !!(pushcutPixCreated2?.value || '').trim();
-        const hasConfirmed = !!(pushcutPixConfirmed?.value || '').trim() || !!(pushcutPixConfirmed2?.value || '').trim();
+        const hasCreated = !!(pushcutPixCreated?.value || '').trim();
+        const hasConfirmed = !!(pushcutPixConfirmed?.value || '').trim();
         if (!hasCreated && !hasConfirmed) {
             if (testPushcutStatus) testPushcutStatus.textContent = 'Informe ao menos uma URL de Pushcut.';
             showToast('Configure a URL de Pushcut.', 'error');
@@ -4017,6 +4092,12 @@ function initAdmin() {
     const renderLeads = (rows, append = false) => {
         if (!leadsBody) return;
         if (!append) leadsBody.innerHTML = '';
+        const esc = (value) => String(value ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
 
         rows.forEach((row) => {
             const tr = document.createElement('tr');
@@ -4034,21 +4115,236 @@ function initAdmin() {
             const statusClass = isPaid
                 ? 'status-pill--paid'
                 : (isPixGenerated ? 'status-pill--pix-created' : 'status-pill--neutral');
+            const campaign = String(row.utm_campaign_name || row.utm_campaign || '-').trim() || '-';
+            const campaignRaw = String(row.utm_campaign || '-').trim() || '-';
+            const source = String(row.utm_source_label || row.utm_source || '-').trim() || '-';
+            const term = String(row.utm_term_label || row.utm_term || '-').trim() || '-';
+            const adset = String(row.utm_adset_name || row.utm_adset_label || row.utm_adset || '-').trim() || '-';
+            const adsetRaw = adset;
             tr.innerHTML = `
-                <td>${row.nome || '-'}</td>
-                <td>${row.email || '-'}</td>
-                <td>${row.telefone || '-'}</td>
-                <td>${row.utm_source || '-'}</td>
-                <td>${row.etapa || '-'}</td>
-                <td><span class="status-pill ${statusClass}">${statusLabel}</span></td>
-                <td>${row.frete || '-'}</td>
-                <td>${row.valor_total ? formatCurrency(row.valor_total) : '-'}</td>
-                <td>${formatDateTime(row.event_time || row.updated_at)}</td>
+                <td class="lead-cell lead-cell--name"><strong>${esc(row.nome || '-')}</strong></td>
+                <td class="lead-cell lead-cell--email">${esc(row.email || '-')}</td>
+                <td class="lead-cell">${esc(row.telefone || '-')}</td>
+                <td class="lead-cell lead-cell--channel">
+                    <span class="lead-chip lead-chip--channel">${esc(source)}</span>
+                </td>
+                <td class="lead-cell lead-cell--source">
+                    <span class="lead-chip lead-chip--term">${esc(term)}</span>
+                </td>
+                <td class="lead-cell lead-cell--campaign" title="${esc(campaignRaw)}">${esc(campaign)}</td>
+                <td class="lead-cell lead-cell--campaign" title="${esc(adsetRaw)}">${esc(adset)}</td>
+                <td class="lead-cell">${esc(row.etapa || '-')}</td>
+                <td class="lead-cell"><span class="status-pill ${statusClass}">${esc(statusLabel)}</span></td>
+                <td class="lead-cell">${esc(row.frete || '-')}</td>
+                <td class="lead-cell">${row.valor_total ? esc(formatCurrency(row.valor_total)) : '-'}</td>
+                <td class="lead-cell">${esc(formatDateTime(row.event_time || row.updated_at))}</td>
             `;
             leadsBody.appendChild(tr);
         });
 
         if (leadsCount) leadsCount.textContent = String(offset + rows.length);
+    };
+
+    const formatPercentOneDecimal = (value) => {
+        const num = Number(value || 0);
+        if (!Number.isFinite(num)) return '0%';
+        const rounded = Math.round(num * 10) / 10;
+        return Number.isInteger(rounded) ? `${rounded.toFixed(0)}%` : `${rounded.toFixed(1)}%`;
+    };
+
+    const renderNativeFunnel = (funnelSummary = null) => {
+        if (!nativeFunnelTrack) return;
+
+        const funnel = funnelSummary && typeof funnelSummary === 'object' ? funnelSummary : null;
+        const stages = Array.isArray(funnel?.stages) ? funnel.stages : [];
+        const base = Number(funnel?.base || 0);
+        if (nativeFunnelBase) nativeFunnelBase.textContent = `Base: ${base}`;
+
+        nativeFunnelTrack.innerHTML = '';
+        if (nativeFunnelEmpty) nativeFunnelEmpty.classList.toggle('hidden', stages.length > 0);
+        if (!stages.length) return;
+
+        stages.forEach((stage, index) => {
+            const rawCount = Number(stage?.countRaw || 0);
+            const pctBase = Number(stage?.pctFromBase || 0);
+            const pctPrev = Number(stage?.pctFromPrev || 0);
+            const dropPct = Number(stage?.dropPct || 0);
+            const directEntries = Number(stage?.directEntries || 0);
+            const progress = Math.max(0, Math.min(100, pctBase));
+            const prevLabel = index === 0
+                ? 'Referencia da base'
+                : `${formatPercentOneDecimal(pctPrev)} vs etapa anterior`;
+            const dropLabel = index === 0 ? '' : `Queda: ${formatPercentOneDecimal(dropPct)}`;
+
+            const card = document.createElement('article');
+            card.className = 'admin-native-stage';
+            card.setAttribute('role', 'listitem');
+            card.innerHTML = `
+                <span class="admin-native-stage__title">${stage?.shortLabel || stage?.label || stage?.key || '-'}</span>
+                <strong class="admin-native-stage__count">${rawCount}</strong>
+                <div class="admin-native-stage__bar"><i style="width: ${progress}%"></i></div>
+                <span class="admin-native-stage__meta">${formatPercentOneDecimal(pctBase)} da base</span>
+                <span class="admin-native-stage__delta">${prevLabel}${dropLabel ? ` | ${dropLabel}` : ''}</span>
+                ${directEntries > 0 ? `<span class="admin-native-stage__direct">+${directEntries} entrada direta</span>` : ''}
+                <span class="admin-native-stage__description">${stage?.description || ''}</span>
+            `;
+            nativeFunnelTrack.appendChild(card);
+        });
+    };
+
+    const pad2 = (value) => String(value).padStart(2, '0');
+    const SIMPLE_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+    const toUtcDateInput = (dateObj) => {
+        if (!(dateObj instanceof Date) || Number.isNaN(dateObj.getTime())) return '';
+        return `${dateObj.getUTCFullYear()}-${pad2(dateObj.getUTCMonth() + 1)}-${pad2(dateObj.getUTCDate())}`;
+    };
+    const parseDateInputUtc = (value) => {
+        const raw = String(value || '').trim();
+        if (!SIMPLE_DATE_RE.test(raw)) return null;
+        const date = new Date(`${raw}T00:00:00.000Z`);
+        if (Number.isNaN(date.getTime())) return null;
+        return date;
+    };
+    const shiftDateInput = (dateInput, days) => {
+        const base = parseDateInputUtc(dateInput);
+        if (!base) return '';
+        base.setUTCDate(base.getUTCDate() + Number(days || 0));
+        return toUtcDateInput(base);
+    };
+    const formatDateInputLabel = (dateInput) => {
+        const date = parseDateInputUtc(dateInput);
+        if (!date) return '-';
+        return date.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+    };
+
+    const buildPresetRange = (preset) => {
+        const today = toUtcDateInput(new Date());
+        if (preset === 'today') {
+            return { preset: 'today', from: today, to: today };
+        }
+        if (preset === 'yesterday') {
+            const day = shiftDateInput(today, -1);
+            return { preset: 'yesterday', from: day, to: day };
+        }
+        if (preset === 'last7') {
+            return { preset: 'last7', from: shiftDateInput(today, -6), to: today };
+        }
+        if (preset === 'last30') {
+            return { preset: 'last30', from: shiftDateInput(today, -29), to: today };
+        }
+        if (preset === 'thisMonth') {
+            const now = new Date();
+            const from = `${now.getUTCFullYear()}-${pad2(now.getUTCMonth() + 1)}-01`;
+            return { preset: 'thisMonth', from, to: today };
+        }
+        if (preset === 'custom') {
+            return { preset: 'custom', from: '', to: '' };
+        }
+        return { preset: 'all', from: '', to: '' };
+    };
+
+    const sanitizeOverviewRange = (rangeInput = {}) => {
+        const preset = String(rangeInput?.preset || 'all').trim();
+        const from = SIMPLE_DATE_RE.test(String(rangeInput?.from || '').trim()) ? String(rangeInput.from).trim() : '';
+        const to = SIMPLE_DATE_RE.test(String(rangeInput?.to || '').trim()) ? String(rangeInput.to).trim() : '';
+        if (preset === 'custom') {
+            return { preset, from, to };
+        }
+        return buildPresetRange(preset);
+    };
+
+    const saveOverviewRange = () => {
+        try {
+            localStorage.setItem(OVERVIEW_RANGE_STORAGE_KEY, JSON.stringify(overviewRange));
+        } catch (_error) {}
+    };
+
+    const loadOverviewRange = () => {
+        try {
+            const raw = localStorage.getItem(OVERVIEW_RANGE_STORAGE_KEY);
+            if (!raw) return sanitizeOverviewRange({ preset: 'all' });
+            const parsed = JSON.parse(raw);
+            return sanitizeOverviewRange(parsed);
+        } catch (_error) {
+            return sanitizeOverviewRange({ preset: 'all' });
+        }
+    };
+
+    const describeOverviewRange = (range) => {
+        if (!range || range.preset === 'all') return 'Periodo: todo historico';
+        const from = String(range.from || '').trim();
+        const to = String(range.to || '').trim();
+        if (from && to && from === to) {
+            return `Periodo: ${formatDateInputLabel(from)} (UTC)`;
+        }
+        if (from && to) {
+            return `Periodo: ${formatDateInputLabel(from)} ate ${formatDateInputLabel(to)} (UTC)`;
+        }
+        if (from) {
+            return `Periodo: desde ${formatDateInputLabel(from)} (UTC)`;
+        }
+        if (to) {
+            return `Periodo: ate ${formatDateInputLabel(to)} (UTC)`;
+        }
+        return 'Periodo: personalizado';
+    };
+
+    const syncOverviewRangeUi = () => {
+        if (!hasOverviewRangeControls) return;
+        if (overviewRangePreset) overviewRangePreset.value = overviewRange.preset || 'all';
+        if (overviewRangeFrom) overviewRangeFrom.value = overviewRange.from || '';
+        if (overviewRangeTo) overviewRangeTo.value = overviewRange.to || '';
+        const isCustom = String(overviewRange.preset || '') === 'custom';
+        if (overviewRangeFrom) overviewRangeFrom.disabled = !isCustom;
+        if (overviewRangeTo) overviewRangeTo.disabled = !isCustom;
+        if (overviewRangeStatus) overviewRangeStatus.textContent = describeOverviewRange(overviewRange);
+    };
+
+    const getActiveOverviewRange = () => {
+        if (!hasOverviewRangeControls) return { from: '', to: '' };
+        if (overviewRange.preset === 'custom') {
+            return {
+                from: String(overviewRange.from || '').trim(),
+                to: String(overviewRange.to || '').trim()
+            };
+        }
+        const built = buildPresetRange(overviewRange.preset || 'all');
+        return { from: built.from || '', to: built.to || '' };
+    };
+
+    const applyOverviewRangeAndReload = async () => {
+        if (!hasOverviewRangeControls) return;
+        const selectedPreset = String(overviewRangePreset?.value || overviewRange.preset || 'all');
+
+        if (selectedPreset === 'custom') {
+            const from = String(overviewRangeFrom?.value || '').trim();
+            const to = String(overviewRangeTo?.value || '').trim();
+            if (from && !SIMPLE_DATE_RE.test(from)) {
+                showToast('Data inicial invalida.', 'error');
+                return;
+            }
+            if (to && !SIMPLE_DATE_RE.test(to)) {
+                showToast('Data final invalida.', 'error');
+                return;
+            }
+            if (from && to && from > to) {
+                showToast('Periodo invalido: data inicial maior que final.', 'error');
+                return;
+            }
+            overviewRange = { preset: 'custom', from, to };
+        } else {
+            overviewRange = buildPresetRange(selectedPreset);
+        }
+
+        saveOverviewRange();
+        syncOverviewRangeUi();
+        await loadLeads({ reset: true });
+    };
+
+    const initializeOverviewRange = () => {
+        if (!hasOverviewRangeControls) return;
+        overviewRange = loadOverviewRange();
+        syncOverviewRangeUi();
     };
 
     const updateMetrics = (rows, reset = false, summary = null) => {
@@ -4066,6 +4362,7 @@ function initAdmin() {
             metrics.cep = Number(summary.cep || 0);
             metrics.paid = Number(summary.paid || 0);
             metrics.lastUpdated = String(summary.lastUpdated || '');
+            metrics.funnel = summary.funnel && typeof summary.funnel === 'object' ? summary.funnel : null;
             const source = summary.gatewayStats || {};
             const base = emptyGatewayStats();
             metrics.gatewayStats = {
@@ -4087,38 +4384,39 @@ function initAdmin() {
                 }
             };
         } else {
-            if (reset) {
-                metrics.total = 0;
-                metrics.pix = 0;
-                metrics.frete = 0;
-                metrics.cep = 0;
-                metrics.paid = 0;
-                metrics.lastUpdated = '';
-                metrics.gatewayStats = emptyGatewayStats();
-            }
+        if (reset) {
+            metrics.total = 0;
+            metrics.pix = 0;
+            metrics.frete = 0;
+            metrics.cep = 0;
+            metrics.paid = 0;
+            metrics.lastUpdated = '';
+            metrics.funnel = null;
+            metrics.gatewayStats = emptyGatewayStats();
+        }
 
-            metrics.total += rows.length;
-            rows.forEach((row) => {
-                const cep = String(row.cep || '').trim();
-                const frete = String(row.frete || '').trim();
-                const pixTxid = String(row.pix_txid || '').trim();
-                const ev = String(row.evento || '').toLowerCase().trim();
-                const gateway = normalizeGatewayKey(row.gateway || 'ativushub');
-                const gatewayStats = metrics.gatewayStats[gateway];
+        metrics.total += rows.length;
+        rows.forEach((row) => {
+            const cep = String(row.cep || '').trim();
+            const frete = String(row.frete || '').trim();
+            const pixTxid = String(row.pix_txid || '').trim();
+            const ev = String(row.evento || '').toLowerCase().trim();
+            const gateway = normalizeGatewayKey(row.gateway || 'ativushub');
+            const gatewayStats = metrics.gatewayStats[gateway];
 
-                gatewayStats.leads += 1;
-                if (pixTxid && pixTxid !== '-') metrics.pix += 1;
-                if (pixTxid && pixTxid !== '-') gatewayStats.pix += 1;
-                if (frete && frete !== '-') metrics.frete += 1;
-                if (cep && cep !== '-') metrics.cep += 1;
-                const isPaid = row.is_paid === true || ev === 'pix_confirmed' || ev === 'pagamento_confirmado' || ev === 'paid';
-                if (isPaid) metrics.paid += 1;
-                if (isPaid) gatewayStats.paid += 1;
-                else if (ev === 'pix_refunded') gatewayStats.refunded += 1;
-                else if (ev === 'pix_refused' || ev === 'pix_failed') gatewayStats.refused += 1;
-                else if (ev === 'pix_pending' || ev === 'pix_created') gatewayStats.pending += 1;
-                if (!metrics.lastUpdated && (row.event_time || row.updated_at)) metrics.lastUpdated = row.event_time || row.updated_at;
-            });
+            gatewayStats.leads += 1;
+            if (pixTxid && pixTxid !== '-') metrics.pix += 1;
+            if (pixTxid && pixTxid !== '-') gatewayStats.pix += 1;
+            if (frete && frete !== '-') metrics.frete += 1;
+            if (cep && cep !== '-') metrics.cep += 1;
+            const isPaid = row.is_paid === true || ev === 'pix_confirmed' || ev === 'pagamento_confirmado' || ev === 'paid';
+            if (isPaid) metrics.paid += 1;
+            if (isPaid) gatewayStats.paid += 1;
+            else if (ev === 'pix_refunded') gatewayStats.refunded += 1;
+            else if (ev === 'pix_refused' || ev === 'pix_failed') gatewayStats.refused += 1;
+            else if (ev === 'pix_pending' || ev === 'pix_created') gatewayStats.pending += 1;
+            if (!metrics.lastUpdated && (row.event_time || row.updated_at)) metrics.lastUpdated = row.event_time || row.updated_at;
+        });
         }
 
         if (metricTotal) metricTotal.textContent = String(metrics.total);
@@ -4189,6 +4487,8 @@ function initAdmin() {
                 metricBestGateway.textContent = `${options[0].label} (${options[0].conv}%)`;
             }
         }
+
+        renderNativeFunnel(metrics.funnel);
     };
 
     const loadLeads = async ({ reset = false } = {}) => {
@@ -4204,6 +4504,10 @@ function initAdmin() {
         url.searchParams.set('offset', String(offset));
         if (query) url.searchParams.set('q', query);
         if (metricTotal) url.searchParams.set('summary', '1');
+        if (metricTotal) url.searchParams.set('summaryMax', '80000');
+        const activeRange = getActiveOverviewRange();
+        if (activeRange.from) url.searchParams.set('from', activeRange.from);
+        if (activeRange.to) url.searchParams.set('to', activeRange.to);
 
         const res = await adminFetch(url.toString());
         if (res.ok) {
@@ -4211,7 +4515,17 @@ function initAdmin() {
             const rows = data.data || [];
             renderLeads(rows, !reset);
             updateMetrics(rows, reset, data.summary || null);
+            if (overviewRangeStatus && data?.summary?.range && hasOverviewRangeControls) {
+                overviewRangeStatus.textContent = describeOverviewRange({
+                    preset: overviewRange.preset,
+                    from: activeRange.from || '',
+                    to: activeRange.to || ''
+                });
+            }
             offset += rows.length;
+        } else if (overviewRangeStatus && hasOverviewRangeControls) {
+            const detail = await res.json().catch(() => ({}));
+            overviewRangeStatus.textContent = detail?.error || 'Falha ao carregar periodo selecionado.';
         }
         loadingLeads = false;
     };
@@ -4390,6 +4704,44 @@ function initAdmin() {
     leadsRefresh?.addEventListener('click', () => loadLeads({ reset: true }));
     leadsMore?.addEventListener('click', () => loadLeads({ reset: false }));
     leadsSearch?.addEventListener('change', () => loadLeads({ reset: true }));
+    overviewRangePreset?.addEventListener('change', async () => {
+        const selected = String(overviewRangePreset.value || 'all');
+        if (selected === 'custom') {
+            overviewRange = {
+                preset: 'custom',
+                from: String(overviewRangeFrom?.value || '').trim(),
+                to: String(overviewRangeTo?.value || '').trim()
+            };
+            syncOverviewRangeUi();
+            saveOverviewRange();
+            return;
+        }
+        overviewRange = buildPresetRange(selected);
+        syncOverviewRangeUi();
+        saveOverviewRange();
+        await loadLeads({ reset: true });
+    });
+    overviewRangeApply?.addEventListener('click', () => {
+        applyOverviewRangeAndReload();
+    });
+    overviewRangeReset?.addEventListener('click', async () => {
+        overviewRange = { preset: 'all', from: '', to: '' };
+        syncOverviewRangeUi();
+        saveOverviewRange();
+        await loadLeads({ reset: true });
+    });
+    overviewRangeFrom?.addEventListener('change', () => {
+        if (overviewRange.preset !== 'custom') return;
+        overviewRange.from = String(overviewRangeFrom?.value || '').trim();
+        saveOverviewRange();
+        syncOverviewRangeUi();
+    });
+    overviewRangeTo?.addEventListener('change', () => {
+        if (overviewRange.preset !== 'custom') return;
+        overviewRange.to = String(overviewRangeTo?.value || '').trim();
+        saveOverviewRange();
+        syncOverviewRangeUi();
+    });
     leadsReconcile?.addEventListener('click', reconcilePix);
     testPixelBtn?.addEventListener('click', runPixelTest);
     testUtmfyBtn?.addEventListener('click', runUtmfyTest);
@@ -4437,6 +4789,7 @@ function initAdmin() {
         setCurrentGatewayCard(selected);
         setGatewayCardOpen(selected, true);
     }
+    initializeOverviewRange();
 
     checkAuth().then((ok) => {
         if (ok) {
@@ -4505,7 +4858,7 @@ function handleAnswer(btnElement, option, refs) {
         );
 
         if (!questions[state.currentQuestionKey]) {
-            showToast('Ocorreu um erro ao carregar a pr√≥xima pergunta.', 'error');
+            showToast('Ocorreu um erro ao carregar a prÛxima pergunta.', 'error');
             state.answerLocked = false;
             return;
         }
@@ -4518,9 +4871,8 @@ function handleAnswer(btnElement, option, refs) {
 function updateProgress(questionCount, progressFill) {
     const total = Math.max(state.totalSteps, state.currentStepIndex);
     questionCount.innerText = `PERGUNTA ${state.currentStepIndex} DE ${total}`;
-    const progressPct = Math.min((state.currentStepIndex / total) * 100, 100);
-    progressFill.style.width = `${progressPct}%`;
-    progressFill.classList.toggle('progress--complete', progressPct >= 100);
+    const progressPct = (state.currentStepIndex / total) * 100;
+    progressFill.style.width = `${Math.min(progressPct, 100)}%`;
 }
 
 function maxPathLengthFrom(key) {
@@ -4702,21 +5054,21 @@ function buildShippingOptions(rawCep) {
     const baseOptions = [
         {
             id: 'economico',
-            name: 'Envio Econ√¥mico Stone',
+            name: 'Envio EconÙmico Stone',
             price: 19.9,
-            eta: '5 a 8 dias √∫teis'
+            eta: '5 a 8 dias ˙teis'
         },
         {
             id: 'padrao',
-            name: 'Envio Padr√£o Stone',
+            name: 'Envio Padr„o Stone',
             price: 25.9,
-            eta: '3 a 5 dias √∫teis'
+            eta: '3 a 5 dias ˙teis'
         },
         {
             id: 'expresso',
-            name: 'Envio Priorit√°rio Stone',
+            name: 'Envio Priorit·rio Stone',
             price: 29.9,
-            eta: '1 a 3 dias √∫teis'
+            eta: '1 a 3 dias ˙teis'
         }
     ];
 
@@ -4842,7 +5194,7 @@ function getPixAddressPayload() {
     return {
         ...address,
         cep: String(address.cep || '').trim(),
-        street: String(address.street || '').trim() || String(address.streetLine || '').split(',')[0]?.trim() || 'Rua n√£o informada',
+        street: String(address.street || '').trim() || String(address.streetLine || '').split(',')[0]?.trim() || 'Rua n„o informada',
         neighborhood: String(address.neighborhood || '').trim() || String(address.streetLine || '').split(',')[1]?.trim() || 'Centro',
         city: String(address.city || '').trim() || cityFromLine || 'Sao Paulo',
         state: String(address.state || '').trim() || stateFromLine || 'SP'
@@ -5033,6 +5385,10 @@ async function createPixCharge(shipping, bumpPrice, options = {}) {
 
         const trackEventRequested = isUpsell ? 'upsell_pix_create_requested' : 'pix_create_requested';
         const trackEventCreated = isUpsell ? 'upsell_pix_created_front' : 'pix_created_front';
+        const sourceStage = String(options?.sourceStage || getStage() || document.body?.dataset?.page || '')
+            .trim()
+            .toLowerCase();
+        const addPaymentInfoEventId = buildAddPaymentInfoEventId(sessionId);
         const payload = {
             sessionId,
             amount,
@@ -5045,7 +5401,8 @@ async function createPixCharge(shipping, bumpPrice, options = {}) {
             personal: getPixPersonalPayload(),
             address: getPixAddressPayload(),
             extra: loadAddressExtra(),
-            sourceStage: String(options?.sourceStage || ''),
+            sourceStage,
+            addPaymentInfoEventId,
             upsell: isUpsell ? {
                 enabled: true,
                 kind: String(options?.upsell?.kind || 'frete_1dia'),
@@ -5144,7 +5501,7 @@ async function ensureApiSession(force = false) {
         credentials: 'same-origin'
     })
         .then((res) => {
-            if (!res.ok) throw new Error('Falha ao iniciar sess√£o segura.');
+            if (!res.ok) throw new Error('Falha ao iniciar sess„o segura.');
             state.apiSessionAt = Date.now();
             return true;
         })
@@ -5238,7 +5595,7 @@ async function ensureSiteConfig(force = false) {
                 state.pixelConfig = JSON.parse(cached);
                 return { pixel: state.pixelConfig };
             }
-        } catch (_e) { }
+        } catch (_e) {}
         return null;
     }
 }
@@ -5264,24 +5621,24 @@ function loadFacebookPixel(pixelId) {
 
     /* eslint-disable */
     if (!window.fbq) {
-        !function (f, b, e, v, n, t, s) {
-            if (f.fbq) return; n = f.fbq = function () {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-            n.queue = []; t = b.createElement(e); t.async = !0;
-            t.src = v; s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        !function(f,b,e,v,n,t,s){
+            if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)
+        }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
     }
     /* eslint-enable */
 
     if (window.__ifoodPixelInits[id]) return;
     try {
+        // Disable Meta automatic events (e.g. SubscribedButtonClick auto-detected).
+        window.fbq('set', 'autoConfig', false, id);
         window.fbq('init', id);
         window.__ifoodPixelInits[id] = true;
-    } catch (_error) { }
+    } catch (_error) {}
 }
 
 function getCookieValue(name) {
@@ -5303,6 +5660,79 @@ function getPixelBrowserContext(utm = {}) {
     return { fbclid, fbp, fbc };
 }
 
+function sanitizeEventIdToken(value, maxLen = 48) {
+    const clean = String(value || '')
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, '');
+    if (!clean) return 'session';
+    return clean.slice(0, maxLen);
+}
+
+function buildLeadEventId(sessionId = '') {
+    const token = sanitizeEventIdToken(sessionId || getLeadSessionId());
+    return `lead_${token}`;
+}
+
+function buildAddPaymentInfoEventId(sessionId = '') {
+    const token = sanitizeEventIdToken(sessionId || getLeadSessionId());
+    return `api_${token}`;
+}
+
+function buildPurchaseEventId(payload = {}) {
+    const txid = String(payload?.pix?.idTransaction || payload?.pix?.idtransaction || payload?.pix?.txid || '').trim();
+    if (txid) return txid;
+    const sessionId = String(payload?.sessionId || getLeadSessionId()).trim();
+    if (sessionId) return sessionId;
+    const token = sanitizeEventIdToken(getLeadSessionId());
+    return `purchase_${token}`;
+}
+
+function shouldDedupePixelByEventId(eventName = '') {
+    return eventName === 'Lead' || eventName === 'AddPaymentInfo' || eventName === 'Purchase';
+}
+
+function loadPixelEventDedupe() {
+    try {
+        const raw = sessionStorage.getItem(STORAGE_KEYS.pixelEventDedupe);
+        if (!raw) return {};
+        const parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return {};
+        return parsed;
+    } catch (_error) {
+        return {};
+    }
+}
+
+function savePixelEventDedupe(map = {}) {
+    try {
+        const entries = Object.entries(map || {});
+        const capped = entries
+            .sort((a, b) => Number(b[1] || 0) - Number(a[1] || 0))
+            .slice(0, 200);
+        const compact = {};
+        capped.forEach(([key, value]) => {
+            compact[key] = Number(value || 0) || Date.now();
+        });
+        sessionStorage.setItem(STORAGE_KEYS.pixelEventDedupe, JSON.stringify(compact));
+    } catch (_error) {}
+}
+
+function hasSentPixelEvent(eventName = '', eventId = '') {
+    const key = `${String(eventName || '').trim()}:${String(eventId || '').trim()}`;
+    if (!key || key === ':') return false;
+    const map = loadPixelEventDedupe();
+    return Boolean(map[key]);
+}
+
+function markPixelEventSent(eventName = '', eventId = '') {
+    const key = `${String(eventName || '').trim()}:${String(eventId || '').trim()}`;
+    if (!key || key === ':') return;
+    const map = loadPixelEventDedupe();
+    map[key] = Date.now();
+    savePixelEventDedupe(map);
+}
+
 async function initMarketing() {
     const pixel = await ensurePixelConfig();
     if (!pixel?.enabled || !pixel.id) {
@@ -5310,24 +5740,26 @@ async function initMarketing() {
     }
 
     loadFacebookPixel(pixel.id);
-
     const page = String(document.body?.dataset?.page || '').trim();
-    if (page === 'pix') {
-        if (pixel.events?.checkout !== false) {
-            const pixData = loadPix();
-            const pixAmount = Number(pixData?.amount || 0);
-            const txid = String(pixData?.idTransaction || pixData?.txid || '').trim();
-            firePixelEvent('AddPaymentInfo', {
-                currency: 'BRL',
-                ...(Number.isFinite(pixAmount) && pixAmount > 0 ? { value: Number(pixAmount.toFixed(2)) } : {}),
-                content_name: 'pix_copia_e_cola'
-            }, txid ? { eventID: txid } : {});
-        }
-        return;
-    }
 
     if (pixel.events?.page_view !== false) {
         firePixelEvent('PageView');
+    }
+
+    if (page === 'pix' && pixel.events?.checkout !== false) {
+        const pixData = loadPix() || {};
+        const pixAmount = Number(pixData?.amount || 0);
+        firePixelEvent('InitiateCheckout', {
+            currency: 'BRL',
+            ...(Number.isFinite(pixAmount) && pixAmount > 0 ? { value: Number(pixAmount.toFixed(2)) } : {})
+        });
+    }
+
+    // Ensure /processando always sends ViewContent after pixel config is ready.
+    if (page === 'processing' && pixel.events?.quiz_view !== false) {
+        firePixelEvent('ViewContent', {
+            content_name: 'processando'
+        });
     }
 }
 
@@ -5335,6 +5767,12 @@ function firePixelEvent(eventName, data = {}, options = {}) {
     if (!window.fbq) return;
     const pixelId = String(state.pixelConfig?.id || '').trim();
     const hasOptions = options && Object.keys(options).length > 0;
+    const eventId = String(options?.eventID || options?.eventId || '').trim();
+    const shouldDedupe = shouldDedupePixelByEventId(eventName) && !!eventId;
+    if (shouldDedupe && hasSentPixelEvent(eventName, eventId)) {
+        return;
+    }
+    let sent = false;
     try {
         if (pixelId) {
             if (hasOptions) {
@@ -5342,6 +5780,8 @@ function firePixelEvent(eventName, data = {}, options = {}) {
             } else {
                 window.fbq('trackSingle', pixelId, eventName, data);
             }
+            sent = true;
+            if (shouldDedupe) markPixelEventSent(eventName, eventId);
             return;
         }
 
@@ -5350,6 +5790,7 @@ function firePixelEvent(eventName, data = {}, options = {}) {
         } else {
             window.fbq('track', eventName, data);
         }
+        sent = true;
     } catch (_error) {
         try {
             if (hasOptions) {
@@ -5357,7 +5798,11 @@ function firePixelEvent(eventName, data = {}, options = {}) {
             } else {
                 window.fbq('track', eventName, data);
             }
-        } catch (_error2) { }
+            sent = true;
+        } catch (_error2) {}
+    }
+    if (sent && shouldDedupe) {
+        markPixelEventSent(eventName, eventId);
     }
 }
 
@@ -5371,85 +5816,38 @@ function maybeTrackPixel(eventName, payload = {}) {
         ? Number((shippingValue + bumpValue).toFixed(2))
         : 0;
     const totalValue = Number.isFinite(explicitValue) && explicitValue > 0 ? explicitValue : computedValue;
-    const txid = String(payload?.pix?.idTransaction || payload?.pix?.idtransaction || '').trim();
-
-    if (eventName === 'quiz_view' && pixel.events?.quiz_view !== false) {
-        firePixelEvent('ViewContent', {
-            content_name: 'quiz_maquininha_stone'
-        });
+    if (eventName === 'personal_submitted' && pixel.events?.lead !== false) {
+        const leadEventId = String(payload?.eventId || buildLeadEventId(payload?.sessionId)).trim();
+        payload.eventId = leadEventId;
+        firePixelEvent('Lead', {}, { eventID: leadEventId });
     }
 
-    if (eventName === 'personal_submitted' && pixel.events?.lead !== false) {
-        firePixelEvent('Lead');
+    if (eventName === 'processing_view' && pixel.events?.quiz_view !== false) {
+        firePixelEvent('ViewContent', {
+            content_name: 'processando'
+        });
     }
 
     if (eventName === 'checkout_view' && pixel.events?.checkout !== false) {
-        firePixelEvent('InitiateCheckout', {
-            currency: 'BRL',
-            ...(totalValue > 0 ? { value: totalValue } : {})
-        });
-    }
-
-    if (eventName === 'upsell_view' && pixel.events?.checkout !== false) {
-        firePixelEvent('ViewContent', {
-            content_name: 'upsell_prioridade_envio',
-            content_category: 'upsell'
-        });
-    }
-
-    if (eventName === 'upsell_accept' && pixel.events?.checkout !== false) {
-        firePixelEvent('AddToCart', {
-            content_name: 'upsell_prioridade_envio',
-            currency: 'BRL',
-            value: totalValue > 0 ? totalValue : 18.98
-        });
-    }
-
-    if (eventName === 'upsell_iof_view' && pixel.events?.checkout !== false) {
-        firePixelEvent('ViewContent', {
-            content_name: 'upsell_seguro_maquininha',
-            content_category: 'upsell'
-        });
-    }
-
-    if (eventName === 'upsell_iof_accept' && pixel.events?.checkout !== false) {
-        firePixelEvent('AddToCart', {
-            content_name: 'upsell_seguro_maquininha',
-            currency: 'BRL',
-            value: totalValue > 0 ? totalValue : 11.73
-        });
-    }
-
-    if (eventName === 'upsell_correios_view' && pixel.events?.checkout !== false) {
-        firePixelEvent('ViewContent', {
-            content_name: 'upsell_despacho_imediato_correios',
-            content_category: 'upsell'
-        });
-    }
-
-    if (eventName === 'upsell_correios_accept' && pixel.events?.checkout !== false) {
-        firePixelEvent('AddToCart', {
-            content_name: 'upsell_despacho_imediato_correios',
-            currency: 'BRL',
-            value: totalValue > 0 ? totalValue : 15.96
-        });
-    }
-
-    if ((eventName === 'pix_created_front' || eventName === 'upsell_pix_created_front') && pixel.events?.checkout !== false) {
+        const addPaymentInfoEventId = String(
+            payload?.addPaymentInfoEventId || payload?.eventId || buildAddPaymentInfoEventId(payload?.sessionId)
+        ).trim();
+        payload.addPaymentInfoEventId = addPaymentInfoEventId;
         firePixelEvent('AddPaymentInfo', {
             currency: 'BRL',
-            ...(totalValue > 0 ? { value: totalValue } : {}),
-            content_name: String(payload?.shipping?.name || '')
-        }, txid ? { eventID: txid } : {});
+            ...(totalValue > 0 ? { value: totalValue } : {})
+        }, { eventID: addPaymentInfoEventId });
     }
 
     if (eventName === 'pix_paid' && pixel.events?.purchase !== false) {
+        const purchaseEventId = String(payload?.purchaseEventId || buildPurchaseEventId(payload)).trim();
+        payload.purchaseEventId = purchaseEventId;
         firePixelEvent('Purchase', {
             currency: 'BRL',
             ...(totalValue > 0 ? { value: totalValue } : {}),
             content_name: String(payload?.shipping?.name || ''),
             content_category: payload?.isUpsell ? 'upsell' : 'checkout'
-        }, txid ? { eventID: txid } : {});
+        }, { eventID: purchaseEventId });
     }
 }
 
@@ -5476,7 +5874,10 @@ function trackLead(eventName, extra = {}) {
         pix: extra.pix || loadPix() || {},
         quiz: extra.quiz || {},
         amount: Number.isFinite(Number(extra.amount)) ? Number(extra.amount) : undefined,
-        isUpsell: extra.isUpsell === true
+        isUpsell: extra.isUpsell === true,
+        eventId: extra.eventId || undefined,
+        addPaymentInfoEventId: extra.addPaymentInfoEventId || undefined,
+        purchaseEventId: extra.purchaseEventId || undefined
     };
 
     maybeTrackPixel(eventName, payload);

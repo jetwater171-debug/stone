@@ -284,16 +284,16 @@ function extractGatewayEvent(gateway, body = {}) {
                 cep: ''
             },
             fallbackUtm: {
-                utm_source: String(metadata?.utm_source || '').trim(),
-                utm_medium: String(metadata?.utm_medium || '').trim(),
-                utm_campaign: String(metadata?.utm_campaign || '').trim(),
-                utm_term: String(metadata?.utm_term || '').trim(),
-                utm_content: String(metadata?.utm_content || '').trim(),
-                src: String(metadata?.src || '').trim(),
-                sck: String(metadata?.sck || '').trim(),
-                fbclid: String(metadata?.fbclid || '').trim(),
-                gclid: String(metadata?.gclid || '').trim(),
-                ttclid: String(metadata?.ttclid || '').trim()
+                utm_source: String(body?.utm_source || metadata?.utm_source || '').trim(),
+                utm_medium: String(body?.utm_medium || metadata?.utm_medium || '').trim(),
+                utm_campaign: String(body?.utm_campaign || metadata?.utm_campaign || '').trim(),
+                utm_term: String(body?.utm_term || metadata?.utm_term || '').trim(),
+                utm_content: String(body?.utm_content || metadata?.utm_content || '').trim(),
+                src: String(body?.src || metadata?.src || '').trim(),
+                sck: String(body?.sck || metadata?.sck || '').trim(),
+                fbclid: String(body?.fbclid || metadata?.fbclid || '').trim(),
+                gclid: String(body?.gclid || metadata?.gclid || '').trim(),
+                ttclid: String(body?.ttclid || metadata?.ttclid || '').trim()
             }
         };
     }
@@ -853,7 +853,7 @@ module.exports = async (req, res) => {
                 price: leadData.shipping_price
             } : null,
             bump: leadData && leadData.bump_selected ? {
-                title: 'Seguro Bag',
+                title: 'Seguro Maquininha',
                 price: leadData.bump_price
             } : null,
             upsell: upsellEvent ? {
@@ -920,6 +920,46 @@ module.exports = async (req, res) => {
             customerEmail: leadData?.email || evt.fallbackPersonal?.email || '',
             cep: leadData?.cep || '',
             shippingName: leadData?.shipping_name || '',
+            utm: {
+                utm_source: leadData?.utm_source || leadUtm?.utm_source || evt.fallbackUtm?.utm_source || evt.fallbackUtm?.src || '',
+                utm_medium: leadData?.utm_medium || leadUtm?.utm_medium || evt.fallbackUtm?.utm_medium || '',
+                utm_campaign: (
+                    leadData?.utm_campaign ||
+                    leadUtm?.utm_campaign ||
+                    evt.fallbackUtm?.utm_campaign ||
+                    evt.fallbackUtm?.campaign ||
+                    evt.fallbackUtm?.sck ||
+                    ''
+                ),
+                utm_term: leadData?.utm_term || leadUtm?.utm_term || evt.fallbackUtm?.utm_term || evt.fallbackUtm?.term || '',
+                utm_content: (
+                    leadData?.utm_content ||
+                    leadUtm?.utm_content ||
+                    evt.fallbackUtm?.utm_content ||
+                    evt.fallbackUtm?.utm_adset ||
+                    evt.fallbackUtm?.adset ||
+                    evt.fallbackUtm?.content ||
+                    ''
+                )
+            },
+            source: leadData?.utm_source || leadUtm?.utm_source || evt.fallbackUtm?.utm_source || evt.fallbackUtm?.src || '',
+            campaign: (
+                leadData?.utm_campaign ||
+                leadUtm?.utm_campaign ||
+                evt.fallbackUtm?.utm_campaign ||
+                evt.fallbackUtm?.campaign ||
+                evt.fallbackUtm?.sck ||
+                ''
+            ),
+            adset: (
+                leadData?.utm_content ||
+                leadUtm?.utm_content ||
+                evt.fallbackUtm?.utm_content ||
+                evt.fallbackUtm?.utm_adset ||
+                evt.fallbackUtm?.adset ||
+                evt.fallbackUtm?.content ||
+                ''
+            ),
             isUpsell: upsellEvent
         };
         const pushKind = upsellEvent ? 'upsell_pix_confirmed' : 'pix_confirmed';
@@ -930,36 +970,6 @@ module.exports = async (req, res) => {
             payload: pushPayload
         }).catch(() => null);
         if (pushQueued?.ok || pushQueued?.fallback) {
-            shouldProcessQueue = true;
-        }
-
-        const fbclid = String(leadData?.fbclid || leadPayload?.fbclid || leadUtm?.fbclid || '').trim();
-        const fbp = String(leadPayload?.fbp || '').trim();
-        const fbc = String(leadPayload?.fbc || '').trim() || (fbclid ? `fb.1.${Date.now()}.${fbclid}` : '');
-        const pixelQueued = await enqueueDispatch({
-            channel: 'pixel',
-            eventName: 'Purchase',
-            dedupeKey: `pixel:purchase:${gateway}:${effectiveTxid}`,
-            payload: {
-                eventId: effectiveTxid || orderIdForPush,
-                amount: eventAmount,
-                orderId: effectiveTxid || orderIdForPush,
-                gateway,
-                shippingName: leadData?.shipping_name || '',
-                isUpsell: upsellEvent,
-                client_email: evt.fallbackPersonal?.email || leadData?.email,
-                client_document: evt.fallbackPersonal?.cpf || leadData?.cpf,
-                client_ip: req?.headers?.['x-forwarded-for']
-                    ? String(req.headers['x-forwarded-for']).split(',')[0].trim()
-                    : req?.socket?.remoteAddress || '',
-                user_agent: req?.headers?.['user-agent'] || '',
-                source_url: leadData?.source_url || leadPayload?.sourceUrl || '',
-                fbclid,
-                fbp,
-                fbc
-            }
-        }).catch(() => null);
-        if (pixelQueued?.ok || pixelQueued?.fallback) {
             shouldProcessQueue = true;
         }
     }

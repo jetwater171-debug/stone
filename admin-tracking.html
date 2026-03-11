@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -8,15 +7,13 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111111" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <title>Parceiro Stonees - Tracking</title>
+  <title>Parceiro Stone - Tracking</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/style.css?v=3.4" />
-  <script src="/backguard.js?v=1.5"></script>
+<script src="/backguard.js?v=1.5"></script>
 </head>
-
 <body data-page="admin" data-admin="tracking">
   <div class="admin-shell">
     <aside class="admin-sidebar">
@@ -46,7 +43,7 @@
       <header class="admin-topbar">
         <div>
           <h1>Tracking</h1>
-          <p>Configure o Pixel do Facebook, selecione eventos e salve com seguranca.</p>
+          <p>Configure o Pixel do Facebook no navegador (somente Pixel ID), selecione eventos e salve.</p>
         </div>
         <div class="admin-topbar-actions">
           <button id="admin-save" class="btn-primary" type="button">Salvar configuracoes</button>
@@ -58,8 +55,7 @@
         <h2>Acesso restrito</h2>
         <p class="admin-muted">Digite sua senha para acessar o painel.</p>
         <div class="input-group">
-          <input type="password" id="admin-password" class="floating-input" placeholder=" "
-            autocomplete="current-password" />
+          <input type="password" id="admin-password" class="floating-input" placeholder=" " autocomplete="current-password" />
           <label for="admin-password" class="floating-label">Senha do admin</label>
         </div>
         <button id="admin-login-btn" class="btn-primary" type="button">Entrar</button>
@@ -72,7 +68,7 @@
             <h2>Pixel do Facebook</h2>
             <span class="admin-chip">Tracking</span>
           </div>
-          <p class="admin-hint">Controle quais eventos sao enviados e valide rapidamente o Pixel ID.</p>
+          <p class="admin-hint">Tracking 100% browser-side. Informe apenas o Pixel ID e escolha os eventos.</p>
           <div class="admin-grid">
             <label class="admin-switch">
               <input type="checkbox" id="pixel-enabled" />
@@ -84,15 +80,13 @@
             </div>
             <div class="admin-checkboxes">
               <label><input type="checkbox" id="pixel-event-page" /> PageView</label>
-              <label><input type="checkbox" id="pixel-event-quiz" /> ViewContent (Quiz)</label>
+              <label><input type="checkbox" id="pixel-event-quiz" /> ViewContent (/processando)</label>
               <label><input type="checkbox" id="pixel-event-lead" /> Lead</label>
-              <label><input type="checkbox" id="pixel-event-checkout" /> InitiateCheckout</label>
-              <label><input type="checkbox" id="pixel-event-purchase" /> Purchase (Aprovado via webhook)</label>
+              <label><input type="checkbox" id="pixel-event-checkout" /> InitiateCheckout (/pix) + AddPaymentInfo (/checkout)</label>
+              <label><input type="checkbox" id="pixel-event-purchase" /> Purchase (PIX pago)</label>
             </div>
           </div>
         </section>
-
-
 
         <section class="admin-section admin-section--card">
           <div class="admin-section-header">
@@ -111,7 +105,11 @@
 
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
 
-  <script src="/script.js?v=7.3" defer></script>
+  <script src="/script.js?v=8.3" defer></script>
 </body>
-
 </html>
+
+
+
+
+
