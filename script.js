@@ -2296,7 +2296,7 @@ function initUpsellIof() {
     const shippingStored = loadShipping();
     const shipping = isShippingSelectionComplete(shippingStored) ? shippingStored : null;
     const pix = loadPix();
-    const offerPrice = 11.73;
+    const offerPrice = 16.73;
 
     trackLead('upsell_iof_view', { stage: 'upsell_iof', shipping, pix, offerPrice });
 
@@ -2310,10 +2310,11 @@ function initUpsellIof() {
     const iofPriceLabels = Array.from(
         new Set([
             ...Array.from(document.querySelectorAll('#upsell-iof-price')),
-            ...Array.from(document.querySelectorAll('#price'))
+            ...Array.from(document.querySelectorAll('#price')),
+            ...Array.from(document.querySelectorAll('#price-total'))
         ])
     );
-    const acceptIdleLabel = btnAccept?.textContent || 'Pagar taxa de IOF de R$ 11,73';
+    const acceptIdleLabel = btnAccept?.textContent || 'Pagar taxa de IOF de R$ 16,73';
     let submitInFlight = false;
 
     if (leadName && personal?.name) {
