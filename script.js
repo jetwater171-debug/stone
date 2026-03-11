@@ -2236,7 +2236,7 @@ function initOrderBump() {
         bump: neutralBump,
         amount: Number(shipping?.price || 0)
     });
-    const bumpPrice = 9.9;
+    const bumpPrice = 17.9;
 
     isOrderBumpEnabled().then((enabled) => {
         if (!enabled) {
@@ -2830,6 +2830,8 @@ function initPix() {
     trackLead('pix_view', { stage: 'pix', shipping });
 
     if (pixAmount) pixAmount.textContent = formatCurrency(pix.amount || 0);
+    const pixAmountReceipt = document.getElementById('pix-amount-receipt');
+    if (pixAmountReceipt) pixAmountReceipt.textContent = formatCurrency(pix.amount || 0);
     if (pixIofAmount) pixIofAmount.textContent = formatCurrency(pix.amount || 0);
     if (pixCorreiosAmount) pixCorreiosAmount.textContent = formatCurrency(pix.amount || 0);
     if (pixIofStatus) pixIofStatus.textContent = 'Status: Aguardando pagamento';
