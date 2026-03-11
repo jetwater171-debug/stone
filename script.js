@@ -2694,7 +2694,7 @@ function initUpsell() {
                 }
             });
         } catch (error) {
-            btnAccept.textContent = 'Quero receber em 1 dia por R$ 18,98';
+            btnAccept.textContent = 'Quero receber em 1 dia por R$ 29,90';
             showToast(error.message || 'Nao foi possivel gerar o PIX de adiantamento.', 'error');
             setLoading(false);
         }
