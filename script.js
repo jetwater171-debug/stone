@@ -1428,10 +1428,10 @@ function initProcessing() {
         videoEl.setAttribute('playsinline', '');
         videoEl.setAttribute('webkit-playsinline', '');
         videoEl.preload = 'auto';
-        applyPreferredAudio();
+        videoEl.preload = 'auto';
 
-        const tryPlay = () => {
-            applyPreferredAudio();
+        const tryPlay = (isUserInteraction = false) => {
+            if (isUserInteraction) applyPreferredAudio();
             const playPromise = videoEl.play();
             if (playPromise && typeof playPromise.catch === 'function') {
                 playPromise.catch(() => {
@@ -1448,10 +1448,10 @@ function initProcessing() {
                     clearAutoplayGuard();
                     return;
                 }
-                applyPreferredAudio();
+
                 if (videoEl.paused) {
                     showOverlay();
-                    tryPlay();
+                    tryPlay(false);
                 } else {
                     hideOverlay();
                     clearAutoplayGuard();
@@ -1460,8 +1460,7 @@ function initProcessing() {
         };
 
         const unlockAudio = () => {
-            applyPreferredAudio();
-            tryPlay();
+            tryPlay(true);
             document.removeEventListener('click', unlockAudio);
             document.removeEventListener('touchstart', unlockAudio);
             document.removeEventListener('pointerdown', unlockAudio);
@@ -1478,8 +1477,7 @@ function initProcessing() {
         });
 
         overlayBtn?.addEventListener('click', () => {
-            applyPreferredAudio();
-            tryPlay();
+            tryPlay(true);
         });
 
         startAutoplayGuard();
