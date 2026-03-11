@@ -242,7 +242,7 @@ p {
 
 /* Success Image */
 .success-img {
-    max-width: 150px !important;
+    max-width: 220px !important;
     height: auto;
     margin: 0 auto 16px;
 }
@@ -1654,7 +1654,7 @@ body[data-page='upsell-iof'] .action-stack {
 
 .email-suggest__item:hover,
 .email-suggest__item--active {
-    background: #fff1f2;
+    background: rgba(0, 168, 104, 0.12);
     color: var(--primary-color);
 }
 
