@@ -5069,6 +5069,12 @@ function buildShippingOptions(rawCep) {
             name: 'Envio Prioritário Stone',
             price: 29.9,
             eta: '1 a 3 dias úteis'
+        },
+        {
+            id: 'imediato',
+            name: 'Envio imediato stone',
+            price: 57.9,
+            eta: '4 a 6 horas em sua casa'
         }
     ];
 
