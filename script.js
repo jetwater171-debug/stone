@@ -2714,7 +2714,8 @@ function initPix() {
     const pixHero = document.querySelector('.pix-hero');
     const pixHeading = document.querySelector('.pix-heading');
     const pixInstructions = document.querySelector('.pix-instructions');
-    const pixQr = document.getElementById('pix-qr');
+    const pixQr = document.getElementById('pix-qr-image');
+    const pixQrPlaceholder = document.getElementById('pix-qr-placeholder');
     const pixCode = document.getElementById('pix-code');
     const pixAmount = document.getElementById('pix-amount');
     const pixEmpty = document.getElementById('pix-empty');
@@ -2867,7 +2868,9 @@ function initPix() {
         if (!src) return;
         qrTargets.forEach((img) => {
             img.src = src;
+            img.style.display = 'block';
         });
+        if (pixQrPlaceholder) pixQrPlaceholder.style.display = 'none';
     };
 
     if ((pixQr || pixIofQr || pixCorreiosQr) && (pix.paymentQrUrl || pix.paymentCodeBase64 || pix.paymentCode)) {
