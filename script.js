@@ -1,89 +1,86 @@
-﻿const questions = {
+const questions = {
     start: {
         id: 'start',
-        text: 'Você já realiza entregas pelo Stone?',
+        text: 'Qual é o principal objetivo do seu negócio para este ano?',
         options: [
-            { text: 'Sim, já sou parceiro', icon: '🛵', next: 'tempo_atividade' },
-            { text: 'Ainda não, quero começar', icon: '🚀', next: 'possu_veiculo' }
+            { text: 'Aumentar as vendas', icon: '🚀', next: 'cnpj_type' },
+            { text: 'Reduzir taxas e custos', icon: '🛡️', next: 'cnpj_type' },
+            { text: 'Receber o dinheiro mais rápido', icon: '⚡', next: 'cnpj_type' },
+            { text: 'Profissionalizar a gestão', icon: '📈', next: 'cnpj_type' }
         ]
     },
-    tempo_atividade: {
-        id: 'tempo_atividade',
-        text: 'Há quanto tempo você está nas entregas?',
+    cnpj_type: {
+        id: 'cnpj_type',
+        text: 'Em média, quanto você fatura por mês atualmente?',
         options: [
-            { text: 'Estou começando agora', icon: '🌱', next: 'disponibilidade' },
-            { text: 'Menos de 1 ano', icon: '⭐', next: 'disponibilidade' },
-            { text: 'Mais de 1 ano', icon: '🏆', next: 'disponibilidade' }
+            { text: 'Começando agora (Até R$ 5 mil)', icon: '🌱', next: 'sector' },
+            { text: 'Em crescimento (R$ 5 mil a R$ 20 mil)', icon: '📊', next: 'sector' },
+            { text: 'Já consolidado (R$ 20 mil a R$ 50 mil)', icon: '💼', next: 'sector' },
+            { text: 'Alto volume (Acima de R$ 50 mil)', icon: '🏢', next: 'sector' }
         ]
     },
-    possu_veiculo: {
-        id: 'possu_veiculo',
-        text: 'Você já tem veículo para entregas?',
+    sector: {
+        id: 'sector',
+        text: 'Qual o seu principal segmento de atuação?',
         options: [
-            { text: 'Sim, já tenho', icon: '✅', next: 'tipo_veiculo' },
-            { text: 'Estou providenciando', icon: '🛠️', next: 'tipo_veiculo' }
+            { text: 'Alimentação & Delivery', icon: '🍔', next: 'sales_model' },
+            { text: 'Varejo & Vestuário', icon: '🛍️', next: 'sales_model' },
+            { text: 'Beleza & Estética', icon: '✂️', next: 'sales_model' },
+            { text: 'Serviços & Outros', icon: '🛠️', next: 'sales_model' }
         ]
     },
-    tipo_veiculo: {
-        id: 'tipo_veiculo',
-        text: 'Qual será seu principal meio de entrega?',
+    sales_model: {
+        id: 'sales_model',
+        text: 'Qual é o seu maior problema com as maquininhas de outras marcas?',
         options: [
-            { text: 'Moto', icon: '🏍️', next: 'cnh_status' },
-            { text: 'Bicicleta', icon: '🚲', next: 'disponibilidade' }
+            { text: 'Taxas abusivas', icon: '💸', next: 'current_machine' },
+            { text: 'Demora para o dinheiro cair', icon: '⏳', next: 'current_machine' },
+            { text: 'Suporte inexistente (Robôs)', icon: '📞', next: 'current_machine' },
+            { text: 'Máquina lenta / Bateria viciada', icon: '🔋', next: 'current_machine' }
         ]
     },
-    cnh_status: {
-        id: 'cnh_status',
-        text: 'Qual é a situação da sua CNH?',
+    current_machine: {
+        id: 'current_machine',
+        text: 'Com que rapidez você precisa que o dinheiro das vendas esteja na sua conta?',
         options: [
-            { text: 'EAR (Atividade remunerada)', icon: '✅', next: 'disponibilidade' },
-            { text: 'CNH comum (sem EAR)', icon: '⚠️', next: 'disponibilidade' },
-            { text: 'Provisória', icon: '🔰', next: 'disponibilidade' }
+            { text: 'Imediatamente (Na hora)', icon: '⚡', next: 'main_pain' },
+            { text: 'No dia seguinte (D+1)', icon: '🌅', next: 'main_pain' },
+            { text: 'Em até 14 dias', icon: '📅', next: 'main_pain' }
         ]
     },
-    disponibilidade: {
-        id: 'disponibilidade',
-        text: 'Quantas horas por dia você pretende ficar online?',
+    main_pain: {
+        id: 'main_pain',
+        text: 'Qual o impacto das vendas via PIX e aproximação (NFC) no seu dia a dia?',
         options: [
-            { text: 'Até 4 horas', icon: '⏱️', next: 'objetivo_renda' },
-            { text: '4 a 8 horas', icon: '💼', next: 'objetivo_renda' },
-            { text: 'Mais de 8 horas', icon: '🚀', next: 'objetivo_renda' }
+            { text: 'São a grande maioria hoje', icon: '📲', next: 'anticipation' },
+            { text: 'Estão crescendo bastante', icon: '⚖️', next: 'anticipation' },
+            { text: 'Ainda prefiro cartão físico', icon: '💳', next: 'anticipation' }
         ]
     },
-    objetivo_renda: {
-        id: 'objetivo_renda',
-        text: 'Qual é seu objetivo com as entregas?',
+    anticipation: {
+        id: 'anticipation',
+        text: 'Se a sua máquina der problema numa sexta-feira à noite, o que você espera?',
         options: [
-            { text: 'Renda extra', icon: '💡', next: 'regiao_preferencia' },
-            { text: 'Renda principal', icon: '📈', next: 'regiao_preferencia' },
-            { text: 'Quero crescer rápido', icon: '🔥', next: 'regiao_preferencia' }
+            { text: 'Atendimento humano em 5 segundos', icon: '🤝', next: 'pix_usage' },
+            { text: 'Troca expressa da máquina', icon: '🛵', next: 'pix_usage' },
+            { text: 'Falar com um robô (Não quero isso)', icon: '🛑', next: 'pix_usage' }
         ]
     },
-    regiao_preferencia: {
-        id: 'regiao_preferencia',
-        text: 'Onde você prefere atuar?',
+    pix_usage: {
+        id: 'pix_usage',
+        text: 'Como está a formalização da sua empresa para ativarmos os planos empresariais?',
         options: [
-            { text: 'Centro e arredores', icon: '🏙️', next: 'equipamento' },
-            { text: 'Bairros residenciais', icon: '🏡', next: 'equipamento' },
-            { text: 'Próximo a shoppings', icon: '🛍️', next: 'equipamento' }
+            { text: 'Tenho CNPJ (MEI / LTDA)', icon: '📝', next: 'commitment' },
+            { text: 'Vendo no CPF (Autônomo)', icon: '👤', next: 'commitment' },
+            { text: 'Estou abrindo meu CNPJ', icon: '⏳', next: 'commitment' }
         ]
     },
-    equipamento: {
-        id: 'equipamento',
-        text: 'Você já tem maquininha térmica em boas condições?',
+    commitment: {
+        id: 'commitment',
+        text: 'Se liberarmos a Maquininha Stone Grátis com as menores taxas do Brasil para o seu perfil, você se compromete a priorizar o uso dela?',
         options: [
-            { text: 'Sim, mas preciso trocar', icon: '♻️', next: 'horario_pico' },
-            { text: 'Não tenho, preciso da primeira', icon: '🎒', next: 'horario_pico' },
-            { text: 'Tenho e quero uma reserva', icon: '✅', next: 'horario_pico' }
-        ]
-    },
-    horario_pico: {
-        id: 'horario_pico',
-        text: 'Você consegue rodar em horários de pico (almoço/jantar)?',
-        options: [
-            { text: 'Sim, com certeza', icon: '🔥', next: 'personal_step' },
-            { text: 'Consigo às vezes', icon: '📅', next: 'personal_step' },
-            { text: 'Prefiro horários alternativos', icon: '🌙', next: 'personal_step' }
+            { text: 'Sim, prioridade total na Stone!', icon: '🤝', next: 'personal_step' },
+            { text: 'Com toda a certeza!', icon: '💚', next: 'personal_step' }
         ]
     }
 };
