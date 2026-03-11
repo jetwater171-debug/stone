@@ -2566,7 +2566,7 @@ function initUpsell() {
     const shippingStored = loadShipping();
     const shipping = isShippingSelectionComplete(shippingStored) ? shippingStored : null;
     const pix = loadPix();
-    const offerPrice = 18.98;
+    const offerPrice = 29.90;
     const query = new URLSearchParams(window.location.search || '');
     const paidMode = query.get('paid') === '1';
 
@@ -2924,7 +2924,7 @@ function initPix() {
         pixOrderId.textContent = id ? id.slice(-6) : '—';
     }
 
-    if (pixTimer && pixProgress) {
+    if (pixTimer) {
         const totalSeconds = 600;
         const createdAt = pix.createdAt || Date.now();
         const endTime = createdAt + totalSeconds * 1000;
@@ -2936,7 +2936,7 @@ function initPix() {
             const seconds = Math.floor((remaining % 60000) / 1000);
             pixTimer.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
             const pct = (remaining / (totalSeconds * 1000)) * 100;
-            pixProgress.style.width = `${Math.max(0, pct)}%`;
+            if (pixProgress) pixProgress.style.width = `${Math.max(0, pct)}%`;
             if (remaining <= 0) {
                 if (timerId) clearInterval(timerId);
             }
