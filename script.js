@@ -5051,6 +5051,19 @@ function clearCoupon() {
 function buildShippingOptions(rawCep) {
     const coupon = loadCoupon();
     const amountOff = Number(coupon?.amountOff || 0) || roundMoney(25.9 * Number(coupon?.discount || 0));
+
+    const getVariance = (id) => {
+        try {
+            const key = 'stone_shipping_var_' + id;
+            let val = sessionStorage.getItem(key);
+            if (!val) {
+                val = (Math.random() * 0.5 - 0.25).toFixed(2);
+                sessionStorage.setItem(key, val);
+            }
+            return Number(val);
+        } catch (e) { return 0; }
+    };
+
     const baseOptions = [
         {
             id: 'economico',
@@ -5079,11 +5092,12 @@ function buildShippingOptions(rawCep) {
     ];
 
     return baseOptions.map((opt) => {
-        const original = Number(opt.price || 0);
-        const discounted = amountOff ? Math.max(0, roundMoney(original - amountOff)) : original;
+        const variance = getVariance(opt.id);
+        const originalWithVariance = Math.max(0, roundMoney(Number(opt.price || 0) + variance));
+        const discounted = amountOff ? Math.max(0, roundMoney(originalWithVariance - amountOff)) : originalWithVariance;
         return {
             ...opt,
-            originalPrice: amountOff ? original : null,
+            originalPrice: amountOff ? originalWithVariance : null,
             price: discounted,
             discountApplied: amountOff > 0
         };
