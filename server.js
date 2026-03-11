@@ -740,6 +740,15 @@ app.get('/api/health', (_req, res) => {
     res.json({ status: 'ok' });
 });
 
+const { processDispatchQueue } = require('./lib/dispatch-queue');
+
 app.listen(PORT, () => {
     console.log(`Servidor ativo em http://localhost:${PORT}`);
+    
+    // Auto-process backend queue for UTMfy/Pushcut every 10 seconds
+    setInterval(() => {
+        processDispatchQueue(30).catch(err => {
+            console.error('[Queue Worker] Error processing dispatch queue:', err);
+        });
+    }, 10000);
 });
